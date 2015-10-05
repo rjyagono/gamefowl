@@ -1,0 +1,3 @@
+= simple_form_for([@fowl, @fowl.comments.build]) do |f|
+	= f.input :content, label: "Reply to thread", input_html: { size: 40 }
+	= f.button :submit, class: "btn btn-primary"

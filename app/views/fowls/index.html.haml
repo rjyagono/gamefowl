@@ -1,0 +1,18 @@
+#fowls.transitions-enabled
+	- @fowls.each do |fowl|
+		.box.panel.panel-default
+			=	link_to (image_tag	fowl.image.url), fowl
+			.panel-body
+				%h2= link_to fowl.title, fowl
+				%p.user
+					= fowl.user.email if fowl.user
+				.btn-group.pull-right
+					= link_to like_fowl_path(fowl), method: :put, class: "btn btn-default" do
+						%span.glyphicon.glyphicon-eye-open
+						= fowl.count_views
+					= link_to fowl, class: "btn btn-default" do
+						%span.glyphicon.glyphicon-comment
+							= fowl.get_upvotes.size
+					= link_to like_fowl_path(fowl), method: :put, class: "btn btn-default" do
+						%span.glyphicon.glyphicon-heart
+							= fowl.get_upvotes.size

@@ -1,0 +1,33 @@
+#fowl_show.row
+	.col-md-8.col-md-offset-2
+		.panel.panel-default
+			.panel-heading.fowl_image
+				= image_tag @fowl.image.url
+			.panel-body
+				%h1= @fowl.title
+				%p= @fowl.description
+			.panel-body
+				.row
+					.col-md-6
+						%p.user
+						Submitted By
+						= (@fowl.user ? @fowl.user.email : 'n/a')
+					.col-md-6
+						.btn-group.pull-right
+							= link_to like_fowl_path(@fowl), method: :put, class: "btn btn-default" do
+								%span.glyphicon.glyphicon-heart
+									= @fowl.get_upvotes.size
+							- if user_signed_in?
+								= link_to 'Edit', edit_fowl_path, class: "btn btn-default"
+								= link_to 'Delete', fowl_path, method:  :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+			.panel-footer
+				.row
+					.col-md-6
+						#comment
+							%h2.comment_count= pluralize(@fowl.comments.count, "Comment")
+							- @fowl.comments.each do |comment|
+								.comment
+									%p.username= comment.user.email
+									%p.content= comment.content
+							%br
+							= render "comments/form"
