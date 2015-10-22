@@ -1,4 +1,7 @@
 GameFowl::Application.routes.draw do
+  resources :contacts
+
+
   get "comments/index"
 
   get "comments/create"
