@@ -1,7 +1,6 @@
 body {
-	background: #fff url('randell_cock.png') no-repeat fixed 0 0 / cover;
-	background-size: contain;
-	background-position: center;
+	background: #fff ;
+	overflow: hidden;
 }
 
 h1 {
@@ -32,6 +31,12 @@ h1 {
 }
 
 .v-center {
-  margin-top:19%;
+  margin-top:10%;
+}
+
+.model img  {
+	width: 500px;
+	background-size: contain;
+	background-position: center;
 }
   
