@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 	
 	has_many :fowls 
+  has_many :profile
 	has_many :comments
 end

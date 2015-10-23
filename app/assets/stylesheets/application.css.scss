@@ -27,8 +27,8 @@ h1, h2, h3, h4, h5, h6 {
 nav {
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 	.navbar-brand {
-		a {
-			color: #BD1E23;
+	  a {
+		  color: #BD1E23;
 			font-weight: bold;
 			&:hover {
 				text-decoration: none;
@@ -113,3 +113,8 @@ nav {
 textarea {
 	min-height: 250px;
 }
+
+.panel-overlay-bottom-left { bottom: 15px; left: 15px; float:left; position:relative; bottom:60px} 
+.panel-overlay-label { background-color: rgba(60, 63, 64, 0.9); color: #fff; padding: 10px; } 
+.panel-overlay-listing-label { left: 0; padding: 7px 10px; } 
+.text-contrast { color: #fff; } h6, .h6 { color: #fff; font-size: 14px; font-weight: bold; } h3, .h3 { font-size: 24px; font-weight: normal; }
