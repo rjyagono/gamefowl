@@ -6,9 +6,9 @@
 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
 	= csrf_meta_tags
 %body
-	%nav.navbar.navbar-default
+	%nav.navbar.navbar-default.alert-success
 		.container
-			.navbar-brand= link_to "Fowl Board", root_path
+			.navbar-logo= link_to image_tag('cocker.jpg'), root_path
 			
 			- if user_signed_in?
 				%ul.nav.navbar-nav.navbar-right

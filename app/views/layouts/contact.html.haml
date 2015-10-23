@@ -7,5 +7,5 @@
 	= csrf_meta_tags
 %body.contacts_layout
 	- flash.each do |name, msg|
-		= content_tag :div, msg, class: "alert alert-info text-center"
+		= content_tag :div, msg, class: "alert alert-#{name} text-center"
 	= yield
