@@ -46,10 +46,12 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-				format.html { redirect_to contacts_url, notice: 'Thank you for subscribing to our newsletter.' }
+				flash[:success] = 'Thank you for subscribing to our newsletter.'
+				format.html { redirect_to contacts_url }
         format.json { render json: @contact, status: :created, location: @contact }
       else
-				format.html { render action: "index" }
+				flash[:danger] = 'Sorry! Please provide a valid email address.'
+				format.html { redirect_to contacts_url }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
