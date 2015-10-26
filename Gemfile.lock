@@ -184,7 +184,7 @@ DEPENDENCIES
   haml (~> 4.0.5)
   jquery-rails
   masonry-rails (= 0.2.1)
-  mysql2 (~> 0.3.10)
+  mysql2 (~> 0.3.20)
   paperclip (= 4.2.0)
   puma
   rails (= 3.2.22)
