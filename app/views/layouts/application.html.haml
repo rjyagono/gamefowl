@@ -9,7 +9,6 @@
 	%nav.navbar.navbar-default.alert-success
 		.container
 			.navbar-logo= link_to image_tag('cocker.jpg'), root_path
-			
 			- if user_signed_in?
 				%ul.nav.navbar-nav.navbar-right
 					%li= link_to "New Fowl", new_fowl_path

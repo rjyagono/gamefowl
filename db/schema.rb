@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151021122857) do
+ActiveRecord::Schema.define(:version => 20151021130530) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -40,9 +40,17 @@ ActiveRecord::Schema.define(:version => 20151021122857) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "price"
+    t.string   "age"
+    t.integer  "contact_number"
   end
 
   add_index "fowls", ["user_id"], :name => "index_fowls_on_user_id"
+
+  create_table "profiles", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -61,21 +69,6 @@ ActiveRecord::Schema.define(:version => 20151021122857) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "views", :force => true do |t|
-    t.integer  "viewer_id",                                           :null => false
-    t.string   "viewer_type",                                         :null => false
-    t.integer  "viewable_id",                                         :null => false
-    t.string   "viewable_type",                                       :null => false
-    t.integer  "times_viewed",     :default => 1
-    t.datetime "past_time_viewed", :default => '2015-09-16 11:47:12'
-    t.datetime "created_at",                                          :null => false
-    t.datetime "updated_at",                                          :null => false
-  end
-
-  add_index "views", ["viewable_id", "viewable_type"], :name => "index_views_on_viewable_id_and_viewable_type"
-  add_index "views", ["viewer_id", "viewer_type", "viewable_id", "viewable_type"], :name => "unique_index_view", :unique => true
-  add_index "views", ["viewer_id", "viewer_type"], :name => "index_views_on_viewer_id_and_viewer_type"
 
   create_table "votes", :force => true do |t|
     t.integer  "votable_id"

@@ -11,7 +11,9 @@
 					.col-md-6
 						%p.user
 						Submitted By
-						= (@fowl.user ? @fowl.user.email : 'n/a')
+						- if @fowl.user
+							= link_to @fowl.user.email, profile_path(@fowl.user.id) 
+
 					.col-md-6
 						.btn-group.pull-right
 							= link_to like_fowl_path(@fowl), method: :put, class: "btn btn-default" do

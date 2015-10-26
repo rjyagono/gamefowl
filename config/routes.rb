@@ -1,5 +1,6 @@
 GameFowl::Application.routes.draw do
   resources :contacts
+  resources :profiles
 
 
   get "comments/index"
