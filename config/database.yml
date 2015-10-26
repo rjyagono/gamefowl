@@ -8,7 +8,7 @@ development:
   database: gamefowlonline
   encoding: utf8
   username: root
-  password: 
+  password: thecockers2015
   pool: 5
   timeout: 5000
 
@@ -20,7 +20,7 @@ test:
   database: gamefowlonline
   encoding: utf8
   username: root
-  password: 
+  password: thecockers2015
   pool: 5
   timeout: 5000
 
@@ -29,6 +29,6 @@ production:
   database: gamefowlonline
   encoding: utf8
   username: root
-  password: 
+  password: thecockers2015
   pool: 5
   timeout: 5000
