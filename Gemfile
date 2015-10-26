@@ -41,4 +41,6 @@ end
 
 gem 'puma'
 
-gem 'test-unit', '~> 3.0'
+group :development, :test do
+	gem 'test-unit', '~> 3.0'
+end
