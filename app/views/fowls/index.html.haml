@@ -3,18 +3,14 @@
 		.box.panel.panel-default
 			=	link_to (image_tag	fowl.image.url), fowl
 			= render "price"
-			.panel-body
-				%h2= link_to fowl.title, fowl
-				%p.user
-					= fowl.user.email if fowl.user
-				%p.price
-					= "P"+fowl.price.to_s
-
-				.btn-group.pull-right
-
-					= link_to fowl, class: "btn btn-default" do
-						%span.glyphicon.glyphicon-comment
-							= fowl.get_upvotes.size
-					= link_to like_fowl_path(fowl), method: :put, class: "btn btn-default" do
-						%span.glyphicon.glyphicon-heart
-							= fowl.get_upvotes.size
+			%h2{ style: 'float:left;width: 100%;padding-top:0' }
+				= link_to fowl.title, fowl
+			%br
+				%table.table{ style: 'margin:0 auto; width:90%' }
+					%tbody
+						%tr{:style => "background: rgb(193, 224, 243) none repeat scroll 0% 0%;"}
+							%td{:style => "width:81px;"} Age:
+							%td 2 Months
+						%tr{:style => "background: rgb(221, 238, 247) none repeat scroll 0% 0%;"}
+							%td Weight:
+							%td 2kgs

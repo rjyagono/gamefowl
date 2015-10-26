@@ -54,6 +54,7 @@ class FowlsController < ApplicationController
 	def	fowl_params
 		{
 			image: params[:fowl][:image],
+			video: params[:fowl][:video],
 			title: params[:fowl][:title],
 			description: params[:fowl][:description],
 			price: params[:fowl][:price],

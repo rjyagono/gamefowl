@@ -3,6 +3,8 @@
 		.panel.panel-default
 			.panel-heading.fowl_image
 				= image_tag @fowl.image.url
+			.panel-heading.fowl_video
+				= video_tag @fowl.video.url, controls: true, style: " margin-left: 15%; max-width: 70%;"
 			.panel-body
 				%h1= @fowl.title
 				%p= @fowl.description
@@ -16,9 +18,6 @@
 
 					.col-md-6
 						.btn-group.pull-right
-							= link_to like_fowl_path(@fowl), method: :put, class: "btn btn-default" do
-								%span.glyphicon.glyphicon-heart
-									= @fowl.get_upvotes.size
 							- if user_signed_in?
 								= link_to 'Edit', edit_fowl_path, class: "btn btn-default"
 								= link_to 'Delete', fowl_path, method:  :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"

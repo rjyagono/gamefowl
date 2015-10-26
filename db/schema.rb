@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151021130530) do
+ActiveRecord::Schema.define(:version => 20151026073504) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -43,6 +43,10 @@ ActiveRecord::Schema.define(:version => 20151021130530) do
     t.integer  "price"
     t.string   "age"
     t.integer  "contact_number"
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
   end
 
   add_index "fowls", ["user_id"], :name => "index_fowls_on_user_id"

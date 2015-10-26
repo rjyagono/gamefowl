@@ -24,7 +24,9 @@ end
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'simple_form' 
 gem 'devise', '3.1.1'
-gem 'paperclip', '4.2.0'
+gem 'paperclip', '4.3.0'
+gem 'paperclip-av-transcoder'
+gem "paperclip-ffmpeg", "~> 1.2.0"
 gem 'masonry-rails', '0.2.1'
 gem 'acts_as_votable', '0.10.0'
 gem 'acts_as_viewable', :github => 'ivoreis/acts_as_viewable'
