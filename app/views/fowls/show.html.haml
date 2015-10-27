@@ -14,7 +14,7 @@
 						%p.user
 						Submitted By
 						- if @fowl.user
-							= link_to @fowl.user.email, profile_path(@fowl.user.id) 
+							= link_to @fowl.user.name, profile_path(@fowl.user.id) 
 
 					.col-md-6
 						.btn-group.pull-right
