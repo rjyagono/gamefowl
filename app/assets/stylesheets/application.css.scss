@@ -46,10 +46,12 @@ nav {
 	  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 	  border-radius: 7px;
 	  text-align: center;
+		
 	  img {
 	  	max-width: 100%;
 	  	height: auto;
 	  }
+		
 	  h2 {
 	  	font-size: 22px;
 	  	margin: 0;
@@ -70,6 +72,18 @@ nav {
 			padding: 15px;
 			margin: 0;
 	  }
+	}
+	
+	.box:hover{
+    outline:none;
+    border-color:#9ecaed;
+    box-shadow:0 0 20px #9ecaed;
+		
+		h2 a {
+			background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+			color: #ffae00;
+			text-decoration: none;
+		}
 	}
 }
 

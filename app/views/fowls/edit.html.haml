@@ -3,6 +3,6 @@
 		.panel.panel-default
 			.panel-heading
 				%h1 Edit Fowl
-			.panel-body
-				= image_tag @fowl.image.url(:medium)
+			.panel-body.text-center
+				= image_tag @fowl.image.url(:small)
 				= render 'form'
