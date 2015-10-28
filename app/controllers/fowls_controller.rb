@@ -31,7 +31,7 @@ class FowlsController < ApplicationController
 	end
 	
 	def	update
-		if @fowl.update_attributes(params[:fowl])
+		if @fowl.update_attributes(fowl_params)
 			redirect_to @fowl, notice: "Fowl was Successfully updated"
 		else
 			render 'edit'	
