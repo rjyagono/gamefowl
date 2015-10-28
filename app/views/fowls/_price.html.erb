@@ -1,1 +1,5 @@
-<div class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label"> <sup class="h6 text-contrast"> P </sup> <span class="h3 price-amount"> 2511 </span> <sup class="h6 text-contrast"> </sup> </div> 
+<div class="panel-overlay-bottom-left panel-overlay-label panel-overlay-listing-label"> 
+<!--  <sup class="h6 text-contrast">  </sup> -->
+  <span class="h3 price-amount"> <%= number_to_currency(price.price, unit: '₱') %> </span> 
+  <sup class="h6 text-contrast"> </sup> 
+</div> 

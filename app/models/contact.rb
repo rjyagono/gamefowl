@@ -1,5 +1,5 @@
 class Contact < ActiveRecord::Base
-  attr_accessible :email
+  #attr_accessible :email
 
 	validates :email, presence: true
 	validates :email, :format => {  :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, 

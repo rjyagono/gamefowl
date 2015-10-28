@@ -2,7 +2,7 @@
 	- @fowls.each do |fowl|
 		.box.panel.panel-default
 			=	link_to (image_tag	fowl.image.url), fowl
-			= render "price"
+			= render "price", price: fowl
 			%h2{ style: 'float:left;width: 100%;padding-top:0' }
 				= link_to fowl.title, fowl
 			%br
@@ -10,7 +10,8 @@
 					%tbody
 						%tr{:style => "background: rgb(193, 224, 243) none repeat scroll 0% 0%;"}
 							%td{:style => "width:81px;"} Age:
-							%td 2 Months
+							%td 
+								= fowl.age
 						%tr{:style => "background: rgb(221, 238, 247) none repeat scroll 0% 0%;"}
 							%td Weight:
 							%td 2kgs

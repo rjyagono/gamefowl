@@ -2,9 +2,9 @@ class Fowl < ActiveRecord::Base
 	acts_as_votable
 #	acts_as_viewable
 	
-	default_scope :order => 'created_at desc'
+	default_scope { order(created_at: 'desc') }
 	
-	attr_accessible :description, :title, :image, :price, :age, :contact_number, :image_delete, :video, :video_delete, :dependent => :destroy
+	#attr_accessible :description, :title, :image, :price, :age, :contact_number, :image_delete, :video, :video_delete, :dependent => :destroy
 	
 	has_many :comments
 	belongs_to :user
