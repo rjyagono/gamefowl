@@ -13,6 +13,14 @@
 					</div>
 
 					<div class="form-group">
+						<%= f.input :location, :required => true, input_html: { class: 'form-control' } %>
+					</div>
+
+					<div class="form-group">
+						<%= f.input :contact_number, :required => true, input_html: { class: 'form-control' } %>
+					</div>
+
+					<div class="form-group">
 						<%= f.input :email, :required => true, :autofocus => true, input_html: { class: 'form-control' } %>
 					</div>
 
