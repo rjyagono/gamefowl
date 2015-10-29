@@ -13,5 +13,10 @@
 							%td 
 								= fowl.age
 						%tr{:style => "background: rgb(221, 238, 247) none repeat scroll 0% 0%;"}
-							%td Weight:
-							%td 2kgs
+							%td Location:
+							%td 
+								= fowl.user.location
+						%tr{:style => "background: rgb(221, 238, 247) none repeat scroll 0% 0%;"}
+							%td Contact #:
+							%td 
+								= fowl.user.contact_number
