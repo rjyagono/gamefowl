@@ -2,7 +2,32 @@
 	- @fowls.each do |fowl|
 		.box.panel.panel-default
 			=	link_to (image_tag	fowl.image.url), fowl
-			.panel-body
-				%h2= link_to fowl.title, fowl
-				%p.user
-					= fowl.user.name if fowl
+			= render "price", price: fowl
+			%h2{ style: 'float:left;width: 100%;padding-top:0' }
+				= link_to fowl.title, fowl
+			%br
+				%table.table{ style: 'margin:0 auto; width:90%' }
+					%tbody
+						%tr{:style => "background: rgb(193, 224, 243) none repeat scroll 0% 0%;"}
+							%td{:style => "width:81px;"} Age:
+							%td 
+								= fowl.age
+						%tr{:style => "background: rgb(221, 238, 247) none repeat scroll 0% 0%;"}
+							%td Location:
+							%td 
+								= fowl.user.location
+						%tr{:style => "background: rgb(221, 238, 247) none repeat scroll 0% 0%;"}
+							%td Contact:
+							%td 
+								= fowl.user.contact_number
+
+/ #fowls.transitions-enabled
+/ 	- @fowls.each do |fowl|
+/ 		.box.panel.panel-default
+/ 			=	link_to (image_tag	fowl.image.url), fowl
+/ 			.panel-body
+/ 				%h2= link_to fowl.title, fowl
+/ 				%p.user
+/ 					= fowl.user.name if fowl
+
+/ 					

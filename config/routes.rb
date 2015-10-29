@@ -10,6 +10,8 @@ GameFowl::Application.routes.draw do
 
   get "comments/create"
 
+
+
   devise_for :users, :controllers => { :registrations => "registrations"}
 
 	resources :fowls do
@@ -34,16 +36,16 @@ GameFowl::Application.routes.draw do
   #   resources :products
 
   # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    # resources :products do
+    #   member do
+    #     get 'short'
+    #     post 'toggle'
+    #   end
+  
+    #   collection do
+    #     get 'sold'
+    #   end
+    # end
 
   # Sample resource route with sub-resources:
   #   resources :products do
@@ -68,7 +70,9 @@ GameFowl::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'contacts#index'
+   # root :to => 'contacts#index'
+   # root :to => 'public#index'
+   root :to => 'fowls#index'
 
   # See how all your routes lay out with "rake routes"
 
