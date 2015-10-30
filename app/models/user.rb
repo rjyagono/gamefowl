@@ -15,4 +15,6 @@ class User < ActiveRecord::Base
 	has_many :fowls 
   has_many :profile
 	has_many :comments
+
+  # validates_numerically  :contact_number, :in => 1..12
 end
