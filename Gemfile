@@ -26,6 +26,7 @@ gem 'acts_as_votable', '0.10.0'
 gem 'haml', '~> 4.0.5'
 
 gem 'jquery-rails'
+gem 'social-share-button'
 
 group :development do
     gem 'capistrano',         require: false
