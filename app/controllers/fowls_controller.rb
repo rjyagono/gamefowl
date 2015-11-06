@@ -31,7 +31,7 @@ class FowlsController < ApplicationController
 	end
 	
 	def	update
-		if @fowl.update_attributes(fowl_params)
+		if @fowl.update_attributes(fwl_params)
 			redirect_to @fowl, notice: "Fowl was Successfully updated"
 		else
 			render 'edit'	
@@ -50,6 +50,10 @@ class FowlsController < ApplicationController
 	end
 	
 	private
+	
+	def	fwl_params
+		params.require(:fowl).permit(:image,:video, :title, :description, :price, :age, :contact_number)
+	end
 	
 	def	fowl_params
 		{
