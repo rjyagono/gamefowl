@@ -1,5 +1,7 @@
 GameFowl::Application.routes.draw do
 	
+  # get 'facebooks/show'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 	
   resources :contacts
