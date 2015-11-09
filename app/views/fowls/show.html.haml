@@ -22,7 +22,7 @@
 								- if @fowl.user_id == current_user.id
 									= link_to 'Edit', edit_fowl_path, class: "btn btn-default"
 									= link_to 'Delete', fowl_path, method:  :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
-					= social_share_button_tag(@fowl.title, :url => fowl_url, :image => @fowl.image.url)
+					= social_share_button_tag(@fowl.title, :url => fowl_url, :image => "http://thecockers.net/system/fowls/images/000/000/005/original/IMG_4830.JPG?1446892798")
 			.panel-footer
 				.row
 					.col-md-6
