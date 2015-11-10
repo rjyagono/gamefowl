@@ -4,7 +4,7 @@
 			.panel-heading.fowl_image
 				= image_tag @fowl.image.url
 			.panel-heading.fowl_video
-				= video_tag @fowl.video.url, controls: true, style: " margin-left: 15%; max-width: 70%;" unless @fowl.video
+				= video_tag @fowl.video.url, controls: true, style: " margin-left: 15%; max-width: 70%;" if @fowl.video.present?
 			.panel-body
 				%h1= @fowl.title
 				%p= @fowl.description

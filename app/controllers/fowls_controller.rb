@@ -52,7 +52,7 @@ class FowlsController < ApplicationController
 	private
 	
 	def	fwl_params
-		params.require(:fowl).permit(:image,:video, :title, :description, :price, :age, :contact_number)
+		params.require(:fowl).permit(:image,:video, :title, :description, :price, :age)
 	end
 	
 	def	fowl_params
@@ -63,7 +63,7 @@ class FowlsController < ApplicationController
 			description: params[:fowl][:description],
 			price: params[:fowl][:price],
 			age: params[:fowl][:age],
-			contact_number: params[:fowl][:contact_number]
+			# contact_number: params[:fowl][:contact_number]
 		}
 	end
 	
