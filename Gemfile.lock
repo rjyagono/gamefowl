@@ -38,7 +38,7 @@ GEM
       tzinfo (~> 1.1)
     acts_as_votable (0.10.0)
     arel (6.0.3)
-    autoprefixer-rails (6.0.3)
+    autoprefixer-rails (6.1.0.1)
       execjs
       json
     av (0.9.0)
@@ -132,8 +132,8 @@ GEM
     paperclip-ffmpeg (1.2.0)
       paperclip (>= 2.5.2)
       rails
-    power_assert (0.2.4)
-    puma (2.14.0)
+    power_assert (0.2.6)
+    puma (2.15.3)
     rack (1.6.4)
     rack-pjax (0.8.0)
       nokogiri (~> 1.5)
@@ -230,6 +230,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   capistrano3-puma
+  cocaine
   coffee-rails (~> 4.1.0)
   devise
   haml (~> 4.0.5)

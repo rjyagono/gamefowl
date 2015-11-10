@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 
 gem 'simple_form' 
 gem 'devise'
+gem 'cocaine'
 gem 'paperclip', '4.3.0'
 gem 'paperclip-av-transcoder'
 gem "paperclip-ffmpeg", "~> 1.2.0"
