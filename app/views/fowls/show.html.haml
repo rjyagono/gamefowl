@@ -23,7 +23,7 @@
 									= link_to 'Edit', edit_fowl_path, class: "btn btn-default"
 									= link_to 'Delete', fowl_path, method:  :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
 					= social_share_button_tag(@fowl.title, :url => fowl_url, :image => @fowl.image.url)
-					.fb-like{"data-action" => "like", "data-href" => "https://developers.facebook.com/docs/plugins/", "data-layout" => "button", "data-share" => "false", "data-show-faces" => "true"}
+					.fb-like{"data-action" => "like", "data-href" => fowl_url, "data-layout" => "button", "data-share" => "false", "data-show-faces" => "true"}
 
 			.panel-footer
 				.row
