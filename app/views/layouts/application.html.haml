@@ -1,7 +1,13 @@
 !!! 5
 %html
 %head
-	%title Game Fowls
+	%meta{:content => "The Rock", :property => "og:title"}/
+	%meta{:content => "movie", :property => "og:type"}/
+	%meta{:content => "http://thecockers.net/fowls/6", :property => "og:url"}/
+	%meta{:content => "http://thecockers.net/system/fowls/images/000/000/006/original/IMG_4724.JPG?1446893742", :property => "og:image"}/
+	%meta{:content => "thecockers.net", :property => "og:site_name"}/
+	%meta{:content => "test sa ko", :property => "og:description"}/
+	%title= content_for?(:titile) ? yield(:title) : "Game Fowls"
 	= stylesheet_link_tag	'application', 'data-turbolinks-track' => true
 	= javascript_include_tag 'application', 'data-turbolinks-track' => true
 	= csrf_meta_tags
