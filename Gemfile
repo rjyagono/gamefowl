@@ -21,6 +21,7 @@ gem 'devise'
 gem 'cocaine'
 gem 'paperclip', '4.3.0'
 gem 'paperclip-av-transcoder'
+gem "paperclip-ffmpeg", "~> 1.2.0"
 gem 'masonry-rails', '0.2.1'
 gem 'acts_as_votable', '0.10.0'
 gem 'haml', '~> 4.0.5'
