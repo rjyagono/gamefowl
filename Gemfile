@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'sass-rails',   '>= 3.2'
 gem 'bootstrap-sass', '~> 3.3.5'
-
+gem 'omniauth-facebook'
 gem 'simple_form' 
 gem 'devise'
 gem 'cocaine'
@@ -27,7 +27,7 @@ gem 'acts_as_votable', '0.10.0'
 gem 'haml', '~> 4.0.5'
 
 gem 'jquery-rails'
-gem 'social-share-button'
+# gem 'social-share-button'
 
 group :development do
     gem 'capistrano',         require: false

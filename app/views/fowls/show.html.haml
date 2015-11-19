@@ -22,8 +22,7 @@
 								- if @fowl.user_id == current_user.id
 									= link_to 'Edit', edit_fowl_path, class: "btn btn-default"
 									= link_to 'Delete', fowl_path, method:  :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
-					= social_share_button_tag(@fowl.title, :url => fowl_url, :image => @fowl.image.url)
-					.fb-like{"data-action" => "like", "data-href" => @fowl.image.url, "data-layout" => "button", "data-share" => "false", "data-show-faces" => "true"}
+					.fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450"}
 
 			.panel-footer
 				.row
