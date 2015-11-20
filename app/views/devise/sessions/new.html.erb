@@ -3,7 +3,10 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 					<h2>Sign in</h2>
+					<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+					<div id="status"></div>
 			</div>
+
 			<div class="panel-body">
 					<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 						<div class="form-group">
