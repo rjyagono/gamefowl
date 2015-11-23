@@ -12,6 +12,10 @@ GameFowl::Application.routes.draw do
 
   get "comments/create"
 
+  # get 'auth/:provider/callback', to: "registrations#create"
+
+  delete 'sign_out', to: "registrations#destroy", as: 'sign_out'
+
 
 
   devise_for :users, :controllers => { :registrations => "registrations"}
