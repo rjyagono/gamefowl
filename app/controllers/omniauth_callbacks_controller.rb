@@ -17,7 +17,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       #handle you logic here..
       #and delegate to super.
       super
-   end
+    end
 
 
 	alias_method :facebook, :all
@@ -27,5 +27,5 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	alias_method :passthru, :all
 	alias_method :google_oauth2, :all
 
-	
+
 end

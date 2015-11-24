@@ -1,13 +1,15 @@
 class User < ActiveRecord::Base
 #	acts_as_viewer
 	
+  # attr_method :image_changed?
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   validates_presence_of :email
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader, :mount_on => :image
   has_many :authorizations
 
   # Setup accessible (or protected) attributes for your model
@@ -52,5 +54,5 @@ class User < ActiveRecord::Base
    end
    authorization.user
  end
- 
+
 end
