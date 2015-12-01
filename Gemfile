@@ -26,7 +26,7 @@ gem 'masonry-rails', '0.2.1'
 gem 'acts_as_votable', '0.10.0'
 gem 'haml', '~> 4.0.5'
 # gem 'carrierwave'
-# gem 'koala'
+gem 'koala'
 # gem 'mini_magick'
 
 gem 'jquery-rails'
