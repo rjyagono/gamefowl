@@ -1,56 +1,82 @@
-!!! 5
-%html
-	%head
-		%title= content_for?(:title) ? yield(:title) : "Game Fowls"
-		= stylesheet_link_tag	'application', 'data-turbolinks-track' => true
-		= javascript_include_tag 'application', 'data-turbolinks-track' => true
-		= csrf_meta_tags
-	%body
-		%nav.navbar.navbar-default.alert-success
-			.container
-				.navbar-logo= link_to image_tag('cocker.jpg'), root_path
-				- if user_signed_in?
-					%ul.nav.navbar-nav.navbar-right
-						%li= link_to "New Fowl", new_fowl_path
-						%li= link_to "Profile", edit_user_registration_path
-						%li= link_to "Sign Out", destroy_user_session_path, method: :delete
-				- else
-					%ul.nav.navbar-nav.navbar-right
-						%li= link_to "Sign Up", new_user_registration_path
-						%li= link_to "Sign In", new_user_session_path
-		.container
-			- flash.each do |name, msg|
-				= content_tag :div, msg, class: "alert alert-info"
-				
-			= yield	
-		
-			:javascript
-				window.fbAsyncInit = function() {
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    %title= content_for?(:title) ? yield(:title) : "Game Fowls"
+    = stylesheet_link_tag	'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default.navbar-fixed-top.container-header-color
+      .container
+        .navbar-logo= link_to image_tag('cocker.jpg'), root_path
+        - if user_signed_in?
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to "New Fowl", new_fowl_path
+            %li= link_to "Profile", edit_user_registration_path
+            %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+        - else
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to "Sign Up", new_user_registration_path
+            %li= link_to "Sign In", new_user_session_path
 
-					FB.init({
 
-					appId      : '1005472019475112',
+    #wrapper
+      / Sidebar
+      #sidebar-wrapper
+        %ul.sidebar-nav
+          / %script#cid0020000109955914287{:async => "", "data-cfasync" => "false", :src => "//st.chatango.com/js/gz/emb.js", :style => "width: 100%;height: 100%;"} {"handle":"gamefowlgroup","arch":"js","styles":{"a":"99CC33","b":37,"c":"000000","d":"000000","f":37,"i":37,"k":"99CC33","l":"99CC33","m":"99CC33","o":37,"p":"10","q":"99CC33","r":37,"fwtickm":1}}
+          %script#cid0020000110216558291{:async => "", "data-cfasync" => "false", :src => "//st.chatango.com/js/gz/emb.js", :style => "width: 250px;height: 1000px;"} {"handle":"gamefowlgroup","arch":"js","styles":{"a":"99CC36","b":100,"c":"000000","d":"000000","k":"99CC36","l":"99CC36","m":"99CC36","p":"10","q":"99CC36","r":100,"surl":0,"cnrs":"0.35","fwtickm":1}}
 
-					xfbml      : true,
+      / /#sidebar-wrapper
+      / Page Content
+      #page-content-wrapper
+        .container-fluid
+          = yield
+      / /#page-content-wrapper
+    / /#wrapper
+    / jQuery
+    %script{:src => "js/jquery.js"}
+    / Bootstrap Core JavaScript
+    %script{:src => "js/bootstrap.min.js"}
+    / Menu Toggle Script
+    :javascript
+      $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
 
-					version    : 'v2.5'
+    :javascript
+        window.fbAsyncInit = function() {
 
-					});
+          FB.init({
 
-				};
+          appId      : '1005472019475112',
 
-				(function(d, s, id){
+          xfbml      : true,
 
-					var js, fjs = d.getElementsByTagName(s)[0];
+          version    : 'v2.5'
 
-					if (d.getElementById(id)) {return;}
+          });
 
-					js = d.createElement(s); js.id = id;
+        };
 
-					js.src = "//connect.facebook.net/en_US/sdk.js";
+        (function(d, s, id){
 
-					fjs.parentNode.insertBefore(js, fjs);
+          var js, fjs = d.getElementsByTagName(s)[0];
 
-				}(document, 'script', 'facebook-jssdk'));
+          if (d.getElementById(id)) {return;}
 
-			
+          js = d.createElement(s); js.id = id;
+
+          js.src = "//connect.facebook.net/en_US/sdk.js";
+
+          fjs.parentNode.insertBefore(js, fjs);
+
+        }(document, 'script', 'facebook-jssdk'));
