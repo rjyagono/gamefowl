@@ -1,7 +1,7 @@
 #fowls.transitions-enabled
 	- @fowls.each do |fowl|
 		.box.panel.panel-default
-			=	link_to (image_tag	fowl.image.url), fowl
+			=	link_to (image_tag	fowl.image.url(:medium) ), fowl
 			= render "price", price: fowl
 			%h2{ style: 'float:left;width: 100%;padding-top:0' }
 				= link_to fowl.title, fowl
