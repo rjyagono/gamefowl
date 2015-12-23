@@ -62,7 +62,7 @@ class FowlsController < ApplicationController
 			title: params[:fowl][:title],
 			description: params[:fowl][:description],
 			price: params[:fowl][:price],
-			age: params[:fowl][:age],
+			age: params[:fowl][:age]
 			# contact_number: params[:fowl][:contact_number]
 		}
 	end

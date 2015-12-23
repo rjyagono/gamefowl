@@ -2,9 +2,9 @@
 	.col-md-8.col-md-offset-2
 		.panel.panel-default
 			.panel-heading.fowl_image
-				= image_tag @fowl.image.url
+				= image_tag @fowl.image_url
 			.panel-heading.fowl_video
-				= video_tag @fowl.video.url, controls: true, style: " margin-left: 15%; max-width: 70%;" if @fowl.video.present?
+				= video_tag @fowl.video_url, controls: true, style: " margin-left: 15%; max-width: 70%;" if @fowl.video.present?
 			.panel-body
 				%h1= @fowl.title
 				%p= @fowl.description

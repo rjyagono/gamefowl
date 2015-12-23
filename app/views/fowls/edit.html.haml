@@ -4,5 +4,5 @@
 			.panel-heading
 				%h1 Edit Fowl
 			.panel-body.text-center
-				= image_tag @fowl.image.url(:small)
+				= image_tag @fowl.image_url(:thumb)
 				= render 'form'
