@@ -8,7 +8,7 @@ private
  
     if user.present?
       @fowls = user.fowls
-    elsif request.subdomain != 'www'
+    else
       redirect_to root_url(subdomain: 'www')
     end
   end
