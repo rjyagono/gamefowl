@@ -2,8 +2,10 @@ class FowlsController < ApplicationController
 	before_filter :find_fowl, only: [:show, :edit, :update, :destroy, :upvote]
 	before_filter :authenticate_user!, except: [:index, :show]
 	
-	def	index	
-		@fowls = Fowl.order("created_at DESC")
+	def	index
+		unless request.subdomain != 'www'
+			@fowls = Fowl.order("created_at DESC")
+		end
 	end
 	
 	def show
