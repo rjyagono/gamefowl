@@ -3,7 +3,7 @@ class FowlsController < ApplicationController
 	before_filter :authenticate_user!, except: [:index, :show]
 	
 	def	index
-		unless request.subdomain != 'www'
+		unless request.subdomain != 'www' || !request.subdomain.present?
 			@fowls = Fowl.order("created_at DESC")
 		end
 	end
