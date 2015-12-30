@@ -42,7 +42,7 @@ nav {
 
 #fowls {
   margin: 0 auto;
-  width: 50%;
+  width: 100%;
   .box {
 	  margin: 10px;
 	  width: 250px;
@@ -106,7 +106,7 @@ nav {
 	.fowl_image {
 		img {
 			max-width: 100%;
-			width: 100%;
+			width: 50%;
 			display: block;
 			margin: 0 auto;
 		}
