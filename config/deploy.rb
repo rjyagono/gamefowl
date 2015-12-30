@@ -33,7 +33,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 ## Linked Files & Directories (Default None):
 # set :linked_files, %w{config/database.yml}
 set :linked_dirs,  %w{public/system}
-#set :linked_dirs, fetch(:linked_dirs) + %w{public/images/uploads public/system}
+set :linked_dirs, fetch(:linked_dirs) + %w{public/system public/uploads}
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
