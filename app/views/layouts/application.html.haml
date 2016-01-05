@@ -27,7 +27,7 @@
             %li= link_to "Sign In", new_user_session_path
 
 
-    / #wrapper
+    #wrapper
       / / Sidebar
       / #sidebar-wrapper
       /   %ul.sidebar-nav
@@ -35,9 +35,9 @@
 
       / /#sidebar-wrapper
       / Page Content
-      #page-content-wrapper
-        .container-fluid
-          = yield
+      / #page-content-wrapper
+      .container-fluid
+        = yield
       / /#page-content-wrapper
     / /#wrapper
     / jQuery
