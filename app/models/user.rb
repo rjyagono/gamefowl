@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email
 
   # mount_uploader :image, ImageUploader, :mount_on => :image
-  has_many :authorizations
+  # has_many :authorizations
 
   # Setup accessible (or protected) attributes for your model
 
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 	
 	has_many :fowls 
-  has_many :profile
+  # has_many :profile 
 	has_many :comments
 
   def self.new_with_session(params,session)
