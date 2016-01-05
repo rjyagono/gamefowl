@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 private
   def get_fowls
-  	user = User.find_by_store_name(request.subdomain)
+  	user = User.find_by(store_name: request.subdomain)
  
     if user.present?
       @fowls = user.fowls
