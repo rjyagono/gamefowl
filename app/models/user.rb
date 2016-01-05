@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   validates_presence_of :email
+  validates_presence_of :store_name
   # mount_uploader :image, ImageUploader, :mount_on => :image
   has_many :authorizations
 
