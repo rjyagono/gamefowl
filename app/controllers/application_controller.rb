@@ -12,6 +12,7 @@ private
       redirect_to root_url(subdomain: 'www')
     end
   end
+  
   # private
 
   # def current_user
