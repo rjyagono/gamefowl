@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
 private
   def get_fowls
-  	user = User.find_by_name(request.subdomain)
+  	user = User.find_by_store_name(request.subdomain)
  
     if user.present?
       @fowls = user.fowls
@@ -12,7 +12,7 @@ private
       redirect_to root_url(subdomain: 'www')
     end
   end
-  
+
   # private
 
   # def current_user
