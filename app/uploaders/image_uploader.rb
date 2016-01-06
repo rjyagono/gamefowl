@@ -33,11 +33,11 @@
 	  end
 
 	  version :large do
-	    process :resize_to_limit => [400, 400]
+	    process :resize_to_limit => [300, 300]
 	  end
 
 	  version :medium do
-	    process :resize_to_limit => [300, 300]
+	    process :resize_to_limit => [200, 200]
 	  end
 #   # Add a white list of extensions which are allowed to be uploaded.
 #   # For images you might use something like this:
