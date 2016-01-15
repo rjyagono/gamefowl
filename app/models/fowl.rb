@@ -7,7 +7,7 @@ class Fowl < ActiveRecord::Base
 	default_scope { order(created_at: 'desc') }
 	
 	# #attr_accessible :description, :title, :image, :price, :age, :contact_number, :image_delete, :video, :video_delete, :dependent => :destroy
-	
+	has_many :photos
 	has_many :comments
 	belongs_to :user
 	belongs_to :profile
@@ -26,6 +26,14 @@ class Fowl < ActiveRecord::Base
 	
 	# validates_uniqueness_of :title
 	# validates_presence_of :title, :description
+
+	# def primary_photo
+	# 	if photos
+	# 		photos).try(:first)
+	# 	else
+			
+	# 	end
+	# end
 	
 		
 end

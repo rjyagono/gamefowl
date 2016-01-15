@@ -261,6 +261,8 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    plupload-rails (1.2.1)
+      rails (>= 3.1)
     power_assert (0.2.6)
     puma (2.15.3)
     rack (1.6.4)
@@ -369,6 +371,7 @@ DEPENDENCIES
   masonry-rails (= 0.2.1)
   mysql2 (~> 0.3.20)
   omniauth-facebook
+  plupload-rails
   puma
   rails (= 4.2.0)
   rails_admin

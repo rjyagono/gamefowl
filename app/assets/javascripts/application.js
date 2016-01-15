@@ -16,3 +16,4 @@
 //= requier bootstrap-sprockets
 //= requier turbolinks
 //= require_tree .
+//= require fotorama.js

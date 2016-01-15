@@ -29,6 +29,7 @@ gem 'carrierwave'
 gem 'rmagick', "~>2.15.4"
 gem 'fog'
 gem 'koala'
+gem 'plupload-rails'
 # gem 'mini_magick'
 
 gem 'jquery-rails'
