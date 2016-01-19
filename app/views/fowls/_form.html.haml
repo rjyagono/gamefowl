@@ -1,3 +1,5 @@
+= javascript_include_tag "plupload.full.min.js"
+
 = simple_form_for @fowl, html: { multipart: true } do |f|
 	- if @fowl.errors.any?
 		#errors
@@ -6,10 +8,17 @@
 			prevented this from saving
 			%ul
 				- @fowl.errors.full_messages.each do |msg|
-					%li= msg
-	Upload Image				
-	.form-group
-		= f.file_field :image, input_html: { class: 'form-control' }
+					%li= msg		
+
+	%p Upload images
+	.upload
+	.filelist{:id=>"filelist"}
+	%br
+	%a{:id=>"pickfiles", :href=>"#"} [Select files]
+	%br
+
+
+
 	Upload Video	
 	.form-group
 		= f.file_field :video, input_html: { class: 'form-control' }
@@ -24,3 +33,53 @@
 		= f.input :description, input_html: { class: 'form-control' }
 		
 	= f.button :submit, class: "btn btn-primary" 
+
+
+
+:javascript
+	$(function(){
+		var uploader = new plupload.Uploader({
+			runtimes : "html5",
+			autostart: true,
+			browse_button : 'pickfiles',
+			max_file_size : '10mb',
+			url : "/upload.json",
+			multipart: true,
+			urlstream_upload: true,
+			multipart_params: {
+			 "authenticity_token" : '#{form_authenticity_token}'
+			}
+		});
+
+		uploader.bind('FileUploaded', function(up, file, response) {
+			var file = JSON.parse(response.response);
+
+			$('#filelist').append('<img id="' + file.id + '" src="' + file.filepath + '">');
+			$('#filelist').append('<input type="hidden" name="photos[]" value="' + file.id + '" />');
+
+		})
+
+		uploader.bind('FilesAdded', function(up, files) {
+			$.each(files, function(i, file) {
+
+				$('#filelist').append(
+					'<img id="' + file.id + '" src="' +  + '">' +
+					'File: ' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+					'</div>'
+					);
+				});
+				uploader.start();
+			});
+
+		uploader.bind('UploadProgress', function(up, file) {
+			
+			$('#' + file.id + " b").html(file.percent + "%");
+		});
+		
+		$('#uploadfiles').click(function(e) {
+		
+		});
+
+		uploader.init();
+	});
+
