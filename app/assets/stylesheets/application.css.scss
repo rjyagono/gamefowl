@@ -101,7 +101,7 @@ nav {
 
 #fowl_show {
 	.panel-heading {
-		padding-left: 200px;
+		padding: 0px;
 	}
 	.fowl_image {
 		img {
@@ -164,3 +164,12 @@ side {
 .panel-body { padding:0px; }
 .panel-body table tr td { padding-left: 15px }
 .panel-body .table {margin-bottom: 0px; }
+
+
+.fotorama__wrap {
+
+    width: 600px;
+    min-width: 0px;
+    max-width: 100%;
+    margin: 0 auto;
+}
