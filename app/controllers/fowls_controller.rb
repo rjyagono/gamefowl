@@ -49,6 +49,9 @@ class FowlsController < ApplicationController
 	
 	def	update
 		if @fowl.update_attributes(fwl_params)
+
+			association_fowl_photo(@fowl)
+			
 			redirect_to @fowl, notice: "Fowl was Successfully updated"
 		else
 			render 'edit'	
