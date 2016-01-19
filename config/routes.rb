@@ -7,6 +7,10 @@ GameFowl::Application.routes.draw do
   resources :contacts
   resources :profiles
 
+  resources :photos
+  get '/upload_photos' => 'photos#upload_photos', as: :upload_photos
+  post '/upload' => 'photos#upload', as: :upload
+
 
   get "comments/index"
 
