@@ -143,20 +143,24 @@ textarea {
 }
 
 side {
-line-height:30px;
-background-color:#acc98f;
-height:300px;
-width:100px;
-float:left;
-padding:5px;
+	line-height:30px;
+	background-color:#acc98f;
+	height:300px;
+	width:100px;
+	float:left;
+	padding:5px;
 }
 
 .container-header-color {
 	background: #99CC36;
 }
 
-
 .panel-overlay-bottom-left { bottom: 15px; left: 15px; float:left; position:relative; bottom:60px} 
 .panel-overlay-label { background-color: rgba(60, 63, 64, 0.9); color: #fff; padding: 10px; } 
 .panel-overlay-listing-label { left: 0; padding: 7px 10px; } 
 .text-contrast { color: #fff; } h6, .h6 { color: #fff; font-size: 14px; font-weight: bold; } h3, .h3 { font-size: 24px; font-weight: normal; }
+
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table {margin-bottom: 0px; }

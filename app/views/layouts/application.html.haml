@@ -13,7 +13,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-default.navbar-fixed-top.container-header-color
+    %nav.navbar.navbar-default.container-header-color
       .container
         .navbar-logo= link_to image_tag('cocker.jpg'), root_path
         - if user_signed_in?
@@ -26,18 +26,16 @@
             %li= link_to "Sign Up", new_user_registration_path
             %li= link_to "Sign In", new_user_session_path
 
-
-    #wrapper
-      / / Sidebar
-      / #sidebar-wrapper
-      /   %ul.sidebar-nav
-      /     <script id="cid0020000110223917797" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height: 100%;">{"handle":"gamefowl2017","arch":"js","styles":{"a":"99CC36","b":100,"c":"000000","d":"000000","k":"99CC36","l":"99CC36","m":"99CC36","p":"10","q":"99CC36","r":100,"usricon":0,"surl":0,"fwtickm":1}}</script>
-
-      / /#sidebar-wrapper
-      / Page Content
-      #page-content-wrapper
-        .container-fluid
-          = yield
+    #page-content-wrapper
+      .container-fluid
+        .row
+          .col-sm-3.col-md-2
+            = render "layouts/sidemenu"
+          .col-sm-8.col-md-8
+            .well
+              = yield
+          .col-sm-3.col-md-2
+            = render "layouts/rightmenu"
       / /#page-content-wrapper
     / /#wrapper
     / jQuery
