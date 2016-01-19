@@ -1,37 +1,43 @@
 #fowl_show.row
-	.col-md-8.col-md-offset-2
-		.panel.panel-default
-			.panel-heading.fowl_image
-				= image_tag @fowl.image_url(:large)
-			.panel-heading.fowl_video
-				= video_tag @fowl.video_url, controls: true, style: " margin-left: 15%; max-width: 70%;" if @fowl.video.present?
-			.panel-body
-				%h1= @fowl.title
-				%p= @fowl.description
-			.panel-body
-				.row
-					.col-md-6
-						%p.user
-						Submitted By
-						- if @fowl.user
-							= link_to @fowl.user.name, profile_path(@fowl.user.id) 
+  .col-md-8.col-md-offset-2
+    .panel.panel-default
+      .panel-heading.fowl_image.fotorama
+        - @fowl.photos.each do |photo|
+          = image_tag photo.image_url(:large)
+        = render "showfowl"
 
-					.col-md-6
-						.btn-group.pull-right
-							- if user_signed_in?
-								- if @fowl.user_id == current_user.id
-									= link_to 'Edit', edit_fowl_path, class: "btn btn-default"
-									= link_to 'Delete', fowl_path, method:  :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
-					.fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450"}
+      .panel-heading.fowl_video
+        = video_tag @fowl.video_url, controls: true, style: " margin-left: 15%; max-width: 70%;" if @fowl.video.present?
+      .panel-body
+        %h1= @fowl.title
+        %p= @fowl.description
+      .panel-body
+        .row
+          .col-md-6
+            %p.user
+            Submitted By
+            - if @fowl.user
+              = link_to @fowl.user.name, profile_path(@fowl.user.id) 
 
-			.panel-footer
-				.row
-					.col-md-6
-						#comment
-							%h2.comment_count= pluralize(@fowl.comments.count, "Comment")
-							- @fowl.comments.each do |comment|
-								.comment
-									%p.username= comment.user.email
-									%p.content= comment.content
-							%br
-							= render "comments/form"
+          .col-md-6
+            .btn-group.pull-right
+              - if user_signed_in?
+                - if @fowl.user_id == current_user.id
+                  = link_to 'Edit', edit_fowl_path, class: "btn btn-default"
+                  = link_to 'Delete', fowl_path, method:  :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+          .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450"}
+
+      .panel-footer
+        .row
+          .col-md-6
+            #comment
+              %h2.comment_count= pluralize(@fowl.comments.count, "Comment")
+              - @fowl.comments.each do |comment|
+                .comment
+                  %p.username= comment.user.email
+                  %p.content= comment.content
+              %br
+              = render "comments/form"
+
+
+

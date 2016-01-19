@@ -17,6 +17,15 @@ class FowlsController < ApplicationController
 			format.js
 		end
 	end
+
+	# def show
+ #    @fowl = fowl.photos.all
+
+ #  		respond_to do |format|
+	# 			format.html { } #for my controller, i wanted it to be JS only
+	# 			format.js
+	# 		end
+ #  end
 	
 	def	new
 		@fowl = current_user.fowls.build
@@ -26,6 +35,9 @@ class FowlsController < ApplicationController
 		@fowl = current_user.fowls.build(fowl_params)
 		
 		if @fowl.save
+
+			association_fowl_photo(@fowl)
+
 			redirect_to @fowl, notice: "Successfully created new fowl"
 		else
 			render 'new'
@@ -37,6 +49,9 @@ class FowlsController < ApplicationController
 	
 	def	update
 		if @fowl.update_attributes(fwl_params)
+
+			association_fowl_photo(@fowl)
+			
 			redirect_to @fowl, notice: "Fowl was Successfully updated"
 		else
 			render 'edit'	
@@ -70,6 +85,14 @@ class FowlsController < ApplicationController
 			age: params[:fowl][:age]
 			# contact_number: params[:fowl][:contact_number]
 		}
+	end
+
+	def association_fowl_photo(fowl)
+		Photo.where(id: photo_ids_params).update_all({ fowl_id: fowl.id })
+	end
+
+	def photo_ids_params
+		params.require(:photos)
 	end
 	
 	def	find_fowl
