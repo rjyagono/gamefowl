@@ -9,6 +9,7 @@ class Fowl < ActiveRecord::Base
 	# #attr_accessible :description, :title, :image, :price, :age, :contact_number, :image_delete, :video, :video_delete, :dependent => :destroy
 	has_many :photos
 	has_many :comments
+	belongs_to :category, class_name: :FowlCategory, foreign_key: :fowl_category_id
 	belongs_to :user
 	belongs_to :profile
 	

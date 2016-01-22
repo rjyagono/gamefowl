@@ -1,10 +1,11 @@
 #fowl_show.row
   .col-md-8.col-md-offset-2
     .panel.panel-default
-      .panel-heading.fowl_image.fotorama
+      .panel-heading.fowl_image.fotorama{"data-nav" => "thumbs"}
         - @fowl.photos.each do |photo|
           = image_tag photo.image_url(:large)
-          
+
+       
       .panel-heading.fowl_video
         = video_tag @fowl.video_url, controls: true, style: " margin-left: 15%; max-width: 70%;" if @fowl.video.present?
       .panel-body

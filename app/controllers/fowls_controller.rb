@@ -2,12 +2,13 @@ class FowlsController < ApplicationController
 	before_filter :find_fowl, only: [:show, :edit, :update, :destroy, :upvote]
 	before_filter :authenticate_user!, except: [:index, :show]
 	
-	def	index
-		unless request.subdomain != 'www'
-			@fowls = Fowl.order("created_at DESC")
-		end
-		if request.subdomain == ''
-			@fowls = Fowl.order("created_at DESC")
+	def	index		
+		if request.subdomain == 'www' || request.subdomain == ''
+			if bloodline_params.present?
+				@fowls = Fowl.where(fowl_category_id: bloodline_params).order("created_at DESC")
+			else
+				@fowls = Fowl.order("created_at DESC")
+			end
 		end
 	end
 	
@@ -18,14 +19,6 @@ class FowlsController < ApplicationController
 		end
 	end
 
-	# def show
- #    @fowl = fowl.photos.all
-
- #  		respond_to do |format|
-	# 			format.html { } #for my controller, i wanted it to be JS only
-	# 			format.js
-	# 		end
- #  end
 	
 	def	new
 		@fowl = current_user.fowls.build
@@ -70,6 +63,10 @@ class FowlsController < ApplicationController
 	end
 	
 	private
+
+	def bloodline_params
+		params[:bloodline_id]
+	end
 	
 	def	fwl_params
 		params.require(:fowl).permit(:image,:video, :title, :description, :price, :age)
@@ -87,6 +84,10 @@ class FowlsController < ApplicationController
 		}
 	end
 
+	# def search_by_category(fowl)
+	# 	@fowl = Fowl.find(params[fowl_category.id])
+	# end
+
 	def association_fowl_photo(fowl)
 		Photo.where(id: photo_ids_params).update_all({ fowl_id: fowl.id })
 	end
@@ -99,3 +100,4 @@ class FowlsController < ApplicationController
 		@fowl = Fowl.find(params[:id])
 	end
 end
+

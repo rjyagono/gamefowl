@@ -30,7 +30,11 @@
 	.form-group
 		= f.input :age, input_html: { class: 'form-control' }
 	.form-group
+		= f.label "Bloodline Category", class: 'control-label'
+		= f.select(:category, options_from_collection_for_select(FowlCategory.all, :id, :name), class: 'form-control')
+	.form-group
 		= f.input :description, input_html: { class: 'form-control' }
+	
 		
 	= f.button :submit, class: "btn btn-primary" 
 

@@ -17,7 +17,7 @@ private
   	user = User.find_by(store_name: request.subdomain)
  
     if user.present?
-      @fowls = user.fowls
+      @fowls = user.fowls.where(fowl_category_id: bloodline_params)
     else
       if request.subdomain != "www"
         redirect_to root_url(subdomain: 'www')
@@ -25,7 +25,11 @@ private
     end
   end
 
-  # private
+ private
+
+  def bloodline_params
+    params[:bloodline_id]
+  end
 
   # def current_user
   # 	@current_user ||= User.find(session[:user_id]) if session[:user_id]

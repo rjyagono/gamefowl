@@ -3,6 +3,7 @@ class Photo < ActiveRecord::Base
 	mount_uploader :image, ImageUploader
 
 	belongs_to :fowl
+	belongs_to :fowl_category
 
 	def self.parse_filename(filename)
     filename.gsub!(/(.jpg|.png)/, '')
