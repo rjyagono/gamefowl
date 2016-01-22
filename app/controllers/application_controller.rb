@@ -12,6 +12,10 @@ def after_sign_in_path_for(resource)
   end
 end
 
+def after_sign_out_path_for(resource)
+  root_url(subdomain: 'www')
+end
+
 private
   def get_fowls
   	user = User.find_by(store_name: request.subdomain)
