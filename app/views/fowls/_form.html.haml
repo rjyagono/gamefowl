@@ -10,19 +10,25 @@
 				- @fowl.errors.full_messages.each do |msg|
 					%li= msg		
 
-	%p Upload images
-	.upload
-	.filelist{:id=>"filelist"}
-	%br
-	%a{:id=>"pickfiles", :href=>"#"} [Select files]
-	%br
+	.row
+		.col-lg-12
+			%h1.page-header Upload Images
+		.col-lg-12
+			.filelist{:id=>"filelist"}
 
+	.row
+		.col-lg-12
+			.upload
+				%br
+				%a{:id=>"pickfiles", :href=>"#"} [Select files]
+				%br
 
-
-	Upload Video	
-	.form-group
-		= f.file_field :video, input_html: { class: 'form-control' }
-		
+	.row
+		.col-lg-12
+			%h1.page-header Upload Video	
+			.form-group
+				= f.file_field :video, input_html: { class: 'form-control' }
+				
 	.form-group
 		= f.input :title, input_html: { class: 'form-control' }
 	.form-group
@@ -32,6 +38,7 @@
 	.form-group
 		= f.label "Bloodline Category", class: 'control-label'
 		= f.select(:category, options_from_collection_for_select(FowlCategory.all, :id, :name), class: 'form-control')
+
 	.form-group
 		= f.input :description, input_html: { class: 'form-control' }
 	
@@ -58,26 +65,33 @@
 		uploader.bind('FileUploaded', function(up, file, response) {
 			var file = JSON.parse(response.response);
 
-			$('#filelist').append('<img id="' + file.id + '" src="' + file.filepath + '">');
+			$('#filelist').append('<div id="' + file.id+ '"class="col-lg-3 col-md-4 col-xs-6 thumb"><a class="thumbnail" href="#"><img alt="" class="img-responsive" src="' + file.filepath + '"></a> <a onclick="myFunction(' + file.id+ ')" class="close" href="#">x</a></div>');
 			$('#filelist').append('<input type="hidden" name="photos[]" value="' + file.id + '" />');
-
+			$('#101').remove();
+			
 		})
 
 		uploader.bind('FilesAdded', function(up, files) {
-			$.each(files, function(i, file) {
 
-				$('#filelist').append(
-					'<img id="' + file.id + '" src="' +  + '">' +
-					'File: ' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
-					'</div>'
-					);
-				});
-				uploader.start();
+				if(up.files.length <= 5){
+					$.each(files, function(i, file) {
+						$('#filelist').append(
+							'<img id="101" src="/assets/loading.gif">'
+							);
+						});
+
+						uploader.start();
+				}else{
+					$('#101').remove();
+					alert('Sorry, but you have reach the maximum of 5 uploads!');
+				}
+
+
 			});
 
-		uploader.bind('UploadProgress', function(up, file) {
+		uploader.bind('UploadProgress', function(up, file) {			
 			
-			$('#' + file.id + " b").html(file.percent + "%");
+
 		});
 		
 		$('#uploadfiles').click(function(e) {
@@ -85,5 +99,22 @@
 		});
 
 		uploader.init();
+
+
 	});
+
+		function myFunction(elem) {
+			$('#' + elem).remove();
+
+				var root = window.location.protocol + '//' + window.location.host;
+
+				var url = root + "/photos/"+ elem +".xml";
+				var xhReq = new XMLHttpRequest();
+				xhReq.open("DELETE", url, false);
+				xhReq.send(null);
+				var serverResponse = xhReq.responseText;
+
+				alert(serverResponse);
+			
+		}
 

@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, only: [:destroy]
 
   # GET /photos
   # GET /photos.json
@@ -61,6 +62,7 @@ class PhotosController < ApplicationController
     parsed = Photo.parse_filename(params[:name])
     @photo.title = parsed[:title]
     if @photo.save
+     delay
      render json: { id: @photo.id, filepath: @photo.image_url(:thumb) }
      # head 200
     end
@@ -75,5 +77,10 @@ class PhotosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
       params.require(:photo).permit(:title, :image)
+    end
+
+    # delay the response for 3 seconds
+    def delay
+      sleep(3)
     end
 end
