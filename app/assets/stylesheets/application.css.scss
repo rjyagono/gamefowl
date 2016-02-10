@@ -43,16 +43,23 @@ nav {
 #fowls {
   margin: 0 auto;
   width: 100%;
+
   .box {
 	  margin: 10px;
 	  width: 250px;
 	  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 	  border-radius: 7px;
-	  text-align: center;
+	  text-align: left;
+
+	  a {
+	  	text-decoration: none;
+	  }
 		
 	  img {
-	  	max-width: 100%;
-	  	height: auto;
+	    border-radius: 3px 3px 0 0;
+	    height: auto;
+	    margin: 0 auto;
+	    max-width: 100%;
 	  }
 		
 	  h2 {
@@ -75,6 +82,32 @@ nav {
 			padding: 15px;
 			margin: 0;
 	  }
+
+	  .info {
+	  	border-radius: 0 0 3px 3px;
+	  	height: 100px;
+	  	padding: 10px;
+
+	  	.posted {
+	  		color: #b8b8b8;
+	  		font-family: Helvetica, sans-serif;
+	  		font-size: 12px;
+	  		font-style: normal;
+	  		font-weight: bold;
+	  		line-height: 18px;
+	  	}
+	  	.headline {
+	  		color: #2e2e2e;
+	  		font-family: Helvetica, sans-serif;
+	  		font-size: 14px;
+	  		font-weight: bold;
+	  		line-height: 18px;
+	  		overflow: hidden;
+	  		padding-top: 8px;
+	  		text-decoration: none;
+	  		text-overflow: ellipsis;
+	  	}
+	  }
 	}
 	
 	.box:hover{
@@ -87,6 +120,9 @@ nav {
 			color: #ffae00;
 			text-decoration: none;
 		}
+		.headline {
+	  	color: #ffae00;
+	  }
 	}
 }
 
@@ -100,6 +136,9 @@ nav {
 }
 
 #fowl_show {
+	.title {
+		margin-top: 0px;	
+	}
 	.panel-heading {
 		padding: 0px;
 	}
@@ -138,6 +177,29 @@ nav {
 	}
 }
 
+.contact-box {
+	background: #ffe1ad;
+	padding: 15px;
+	border-radius: 3px;
+
+	.title{
+		color: #f17c36;
+	}
+
+	.location {
+		line-height: 20px;
+		margin-bottom: 10px;
+		font-weight: bold;
+	}
+
+	.btn-orange {
+		background: #f17c36;
+		border-color: #de7332;
+		color: #fff;
+		font-weight: bold;
+	}
+}
+
 textarea {
 	min-height: 250px;
 }
@@ -155,7 +217,15 @@ side {
 	background: #99CC36;
 }
 
-.panel-overlay-bottom-left { bottom: 15px; left: 15px; float:left; position:relative; bottom:60px} 
+/* .panel-overlay-bottom-left { bottom: 15px; left: 15px; float:left; position:relative; bottom:60px} */
+
+.panel-overlay-bottom-left {
+	background-position: -427px -54px;
+	bottom: 60px;
+	position: relative;
+	width: 130px;
+}
+
 .panel-overlay-label { background-color: rgba(60, 63, 64, 0.9); color: #fff; padding: 10px; } 
 .panel-overlay-listing-label { left: 0; padding: 7px 10px; } 
 .text-contrast { color: #fff; } h6, .h6 { color: #fff; font-size: 14px; font-weight: bold; } h3, .h3 { font-size: 24px; font-weight: normal; }

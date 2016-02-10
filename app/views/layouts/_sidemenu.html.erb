@@ -12,14 +12,14 @@
                           <table class="table">
                              <tr>
                                   <td>
-                                    <span class="glyphicon glyphicon-flash text-success"></span>
+                                    <span class="glyphicon glyphicon-triangle-right text-success"></span>
                                     <%= link_to "All", root_url %>
                                   </td>
                               </tr>
                              <% FowlCategory.find_each do |category| %>
                               <tr>
                                   <td>
-                                    <span class="glyphicon glyphicon-flash text-success"></span>
+                                    <span class="glyphicon glyphicon-triangle-right text-success"></span>
                                     <%= link_to category.name, root_url(bloodline_id: category.id) %>
                                   </td>
                               </tr>

@@ -1,0 +1,106 @@
+<!-- <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+                <div class="navbar-header">
+                        <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                        </button>
+                        <a href="#" class="navbar-brand">TheCockers</a>
+                </div> 
+                <div id="searchbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="fa fa-home"></i> Home <span class="caret"></span>
+                        </a>
+                          <ul role="menu" class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-dot-circle-o"></i> Top Rated</a></li>
+                            <li><a href="#"><i class="fa fa-list-alt"></i> Featured</a></li>
+                            <li><a href="#"><i class="fa fa-star-half-o"></i> Latest Upload</a></li>
+                          </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a aria-expanded="false" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="glyphicon glyphicon-list-alt"></i> Bloodlines <span class="caret"></span>
+                        </a>
+                          <ul role="menu" class="dropdown-menu">
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Regular Grey</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> McLean Hatch</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Roundhead</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Oriental</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Sweater</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Kearney White hackle</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Butcher</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Blue face Hatch</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Brown Red</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Lemon 84</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Muff</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Pyle</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-chevron-right"></i> Others</a></li>
+                          </ul>
+                      </li>
+                                <li>&nbsp;</li>
+                    </ul>
+                        <form action="/" method="get" class="navbar-form">
+                                <div style="display:inline;" class="form-group">
+                                        <div style="display:table;" class="input-group">
+                                                <input type="hidden" value="search" name="do">
+                                                <input type="text" autofocus="autofocus" autocomplete="off" placeholder="Type fowl name here?" name="q" class="form-control search-form">
+                                                <span style="width:1%;cursor: pointer;" class="input-group-btn"><button class="btn btn-primary" type="submit"> Search</button></span>
+                                        </div>
+                                </div>
+                        </form>
+                </div> 
+        </div> 
+</div> -->
+
+<div class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-logo">
+              <%= link_to image_tag('cocker.jpg'), root_path %>
+            </div>
+    </div> 
+    <div id="navigation" class="navigation navbar-collapse collapse" aria-expanded="false" style="height: 81px; ">
+        <ul class="nav navbar-nav">
+          <li><a href="#" class="store-brand"><i class="fa fa-home"></i><span class="hidden-sm"> Home</span></a></li>          
+          <li><a href="#"><i class="fa fa-certificate"></i><span class="hidden-sm">  New Fowls</span></a></li><!-- <li><a href="#"><i class="fa fa-fire"></i><span class="hidden-sm"> Special Offers</span></a></li>
+          <li><a href="#"><i class="fa fa-comment"></i><span class="hidden-sm"> Reviews</span></a></li> -->        </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-user"></i><span class="hidden-sm"> My Account</span> <span class="caret"></span></a>
+            <ul role="menu" class="dropdown-menu">
+<!--               <li>
+                <a href="#"><i class="fa fa-sign-in"></i> Log In</a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-pencil"></i> Register</a>              
+              </li>
+              <li class="divider"></li>
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">My Orders</a></li>
+              <li><a href="#">My Address Book</a></li>
+              <li><a href="#">My Password</a></li> -->
+
+          <% if user_signed_in? %>
+                <li><%= link_to "Add Fowl", new_fowl_path %></li>
+                <li><%= link_to "Profile", edit_user_registration_path %></li>
+                <li><%= link_to "log Out", destroy_user_session_path, method: :delete %></li>
+          <%  else %>
+                <li><%= link_to " Log In", new_user_session_path %></li>
+                <li><%= link_to " Register", new_user_registration_path %></li>
+          <%  end %>
+
+            </ul>
+          </li>
+          
+    </div>
+  </div>
+</div>

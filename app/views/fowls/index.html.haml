@@ -1,23 +1,19 @@
 #fowls.transitions-enabled
-	- @fowls.each do |fowl|
-		.box.panel.panel-default
-			= link_to (image_tag fowl.try(:photos).try(:first).try(:image_url, :medium)), fowl
-			= render "price", price: fowl
-			%h2{ style: 'float:left;width: 100%;padding-top:0' }
-				= link_to fowl.title, fowl
-			%br
-				%table.table{ style: 'margin:0 auto; width:90%' }
-					%tbody
-						%tr{:style => "background: rgb(193, 224, 243) none repeat scroll 0% 0%;"}
-							%td{:style => "width:81px;"} Age:
-							%td 
-								= fowl.age
-						%tr{:style => "background: rgb(221, 238, 247) none repeat scroll 0% 0%;"}
-							%td Location:
-							%td 
-								= fowl.user.location
-						%tr{:style => "background: rgb(221, 238, 247) none repeat scroll 0% 0%;"}
-							%td Contact:
-							%td 
-								= fowl.user.contact_number
-
+  - @fowls.each do |fowl|
+    .box.panel.panel-default
+      %a.link{:href => fowl_path(fowl)}
+        .image
+          - if fowl.try(:photos).first.present?
+            = image_tag fowl.try(:photos).try(:first).try(:image_url, :medium)
+          - else
+            = image_tag('no-image.png')
+          = render "price", price: fowl
+        .info
+          .headline
+            = fowl.title
+          .posted
+            %span.glyphicon.glyphicon-time
+            = fowl.created_at.strftime("Posted #{fowl.created_at.day.ordinalize} %b")
+          .posted
+            %span.glyphicon.glyphicon-map-marker
+            = fowl.user.location
