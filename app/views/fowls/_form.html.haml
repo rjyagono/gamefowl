@@ -18,6 +18,25 @@
 						Upload Images
 				.panel-footer.panel-body
 					.filelist{:id=>"filelist"}
+					/ %ul
+					/ 	%li
+					/ 		%a{:id=>"pickfiles", :href=>"#"} [Select ]
+					/ 		%img{:src => "http://placehold.it/150x150"}/
+					/ 	%li
+					/ 		%a{:id=>"pickfiles", :href=>"#"} [Select ]
+					/ 		%img{:src => "http://placehold.it/150x150"}/
+					/ 	%li
+					/ 		%a{:id=>"pickfiles", :href=>"#"} [Select ]
+					/ 		%img{:src => "http://placehold.it/150x150"}/
+					/ 	%li
+					/ 		%a{:id=>"pickfiles", :href=>"#"} [Select ]
+					/ 		%img{:src => "http://placehold.it/150x150"}/
+					/ 	%li
+					/ 		%a{:id=>"pickfiles", :href=>"#"} [Select ]
+					/ 		%img{:src => "http://placehold.it/150x150"}/
+					/ 	%li
+					/ 		%a{:id=>"pickfiles", :href=>"#"} [Select ]
+					/ 		%img{:src => "http://placehold.it/150x150"}/
 
 					.row
 						.col-lg-12
@@ -42,14 +61,14 @@
 	.form-group
 		= f.input :age, input_html: { class: 'form-control' }
 	.form-group
-		= f.label "Bloodline Category", class: 'control-label'
+		= f.label "Choose a Bloodline", class: 'control-label'
 		= f.select(:category, options_from_collection_for_select(FowlCategory.all, :id, :name), class: 'form-control')
 
 	.form-group
 		= f.input :description, input_html: { class: 'form-control' }
 	
 		
-	= f.button :submit, class: "btn btn-primary" 
+	= f.button :submit, class: "btn btn-primary",   value: 'Submit Fowl' 
 
 
 

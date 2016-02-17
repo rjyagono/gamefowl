@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout "fowls"
 
  	before_filter :set_user, only: [:show, :edit, :update]
   before_filter :validate_authorization_for_user, only: [:edit, :update]

@@ -1,0 +1,61 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    %title= content_for?(:title) ? yield(:title) : "Game Fowls"
+    = stylesheet_link_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-inverse.navbar-default.container-header-color{:role => "navigation"}
+      .navbar-header.pull-right
+        .pull-right
+          %button.btn.btn-nav.navbar-btn.dropdown-toggle.margin-right-10{"aria-expanded" => "false", "data-toggle" => "dropdown", :style => "opacity: 1;", :type => "button"}
+            .hidden-xs.hidden-sm
+              %i.fa.fa-user.fa-lg.fa-fw>
+              \&nbsp;&nbsp;My Account
+              %span.caret
+            .hidden-xs.hidden-md.hidden-lg
+              %i.fa.fa-user.fa-lg.fa-fw>
+              \&nbsp;&nbsp;Account
+              %span.caret
+            .hidden-sm.hidden-md.hidden-lg
+              %i.fa.fa-user.fa-lg.fa-fw
+              %span.caret
+          - if user_signed_in?
+            %ul.dropdown-menu.pull-right.col-xs-7.col-sm-4.col-md-3.col-lg-2{:role => "menu"}
+              %li
+                %a{"data-method" => "delete", :href => destroy_user_session_path}
+                  %i.fa.fa-sign-in.fa-lg>
+                  \&nbsp;&nbsp;Sign Out
+              %li
+                %a{:href => edit_user_registration_path }
+                  %i.fa.fa-user.fa-lg>
+                  \&nbsp;&nbsp;Profile
+              %li
+                %a{:href => new_fowl_path }
+                  %i.fa.fa-plus.fa-lg>
+                  \&nbsp;&nbsp;Post New Fowl
+          - else      
+            %ul.dropdown-menu.pull-right.col-xs-7.col-sm-4.col-md-3.col-lg-2{:role => "menu"}
+              %li
+                %a{:href => new_user_session_path}
+                  %i.fa.fa-sign-in.fa-lg>
+                  \&nbsp;&nbsp;Sign In
+              %li
+                %a{:href => new_user_registration_path}
+                  %i.fa.fa-user.fa-lg>
+                  \&nbsp;&nbsp;Register
+              %li
+                %a{:href => new_fowl_path}
+                  %i.fa.fa-plus.fa-lg>
+                  \&nbsp;&nbsp;Post New Fowl
+
+      .navbar-header
+        .navbar-logo.navbar-brand= link_to image_tag('cocker.jpg'), root_path
