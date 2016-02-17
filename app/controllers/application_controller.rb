@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  layout :layout_by_resource
   protect_from_forgery with: :exception
   before_filter :get_fowls
 
@@ -22,6 +23,7 @@ private
  
     if user.present?
       @fowls = user.fowls.where(fowl_category_id: bloodline_params)
+      @category = FowlCategory.find(bloodline_params) if bloodline_params.present?
     else
       if request.subdomain != "www"
         redirect_to root_url(subdomain: 'www')
@@ -35,6 +37,13 @@ private
     params[:bloodline_id]
   end
 
+  def layout_by_resource
+    if devise_controller?
+      "fowls"
+    else
+      "application"
+    end
+  end
   # def current_user
   # 	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   # end
