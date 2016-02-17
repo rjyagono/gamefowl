@@ -1,78 +1,51 @@
-!!!
-%html{:lang => "en"}
-  %head
-    %meta{:charset => "utf-8"}
-    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
-    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
-    %meta{:content => "", :name => "description"}
-    %meta{:content => "", :name => "author"}
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    %title= content_for?(:title) ? yield(:title) : "Game Fowls"
-    = stylesheet_link_tag	'application', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
-  %body
-    %nav.navbar.navbar-default.container-header-color
-      .container
-        .navbar-logo= link_to image_tag('cocker.jpg'), root_path
-        - if user_signed_in?
-          %ul.nav.navbar-nav.navbar-right
-            %li= link_to "New Fowl", new_fowl_path
-            %li= link_to "Profile", edit_user_registration_path
-            %li= link_to "Sign Out", destroy_user_session_path, method: :delete
-        - else
-          %ul.nav.navbar-nav.navbar-right
-            %li= link_to "Sign Up", new_user_registration_path
-            %li= link_to "Sign In", new_user_session_path
+= render "layouts/main"
+#page-content-wrapper
+  .container-fluid
+    .row
+      .col-sm-3.col-md-2
+        = render "layouts/sidemenu"
+      .col-sm-8.col-md-8
+        = yield
+      .col-sm-3.col-md-2
+        = render "layouts/rightmenu"
+  / /#page-content-wrapper
+/ /#wrapper
+/ jQuery
+%script{:src => "js/jquery.js"}
+/ Bootstrap Core JavaScript
+%script{:src => "js/bootstrap.min.js"}
+/ Menu Toggle Script
+:javascript
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+  });
 
-    #page-content-wrapper
-      .container-fluid
-        .row
-          .col-sm-3.col-md-2
-            = render "layouts/sidemenu"
-          .col-sm-8.col-md-8
-            = yield
-          .col-sm-3.col-md-2
-            = render "layouts/rightmenu"
-      / /#page-content-wrapper
-    / /#wrapper
-    / jQuery
-    %script{:src => "js/jquery.js"}
-    / Bootstrap Core JavaScript
-    %script{:src => "js/bootstrap.min.js"}
-    / Menu Toggle Script
-    :javascript
-      $("#menu-toggle").click(function(e) {
-          e.preventDefault();
-          $("#wrapper").toggleClass("toggled");
+:javascript
+    window.fbAsyncInit = function() {
+
+      FB.init({
+
+      appId      : '1005472019475112',
+
+      xfbml      : true,
+
+      version    : 'v2.5'
+
       });
 
-    :javascript
-        window.fbAsyncInit = function() {
+    };
 
-          FB.init({
+    (function(d, s, id){
 
-          appId      : '1005472019475112',
+      var js, fjs = d.getElementsByTagName(s)[0];
 
-          xfbml      : true,
+      if (d.getElementById(id)) {return;}
 
-          version    : 'v2.5'
+      js = d.createElement(s); js.id = id;
 
-          });
+      js.src = "//connect.facebook.net/en_US/sdk.js";
 
-        };
+      fjs.parentNode.insertBefore(js, fjs);
 
-        (function(d, s, id){
-
-          var js, fjs = d.getElementsByTagName(s)[0];
-
-          if (d.getElementById(id)) {return;}
-
-          js = d.createElement(s); js.id = id;
-
-          js.src = "//connect.facebook.net/en_US/sdk.js";
-
-          fjs.parentNode.insertBefore(js, fjs);
-
-        }(document, 'script', 'facebook-jssdk'));
+    }(document, 'script', 'facebook-jssdk'));

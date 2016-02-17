@@ -3,8 +3,8 @@
               <div class="panel panel-default">
                   <div class="panel-heading">
                       <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
-                          </span>Bloodlines</a>
+                          <span class="glyphicon glyphicon-folder-close">
+                          </span>Bloodlines
                       </h4>
                   </div>
                   <div id="collapseOne1" class="in">
@@ -12,14 +12,14 @@
                           <table class="table">
                              <tr>
                                   <td>
-                                    <span class="glyphicon glyphicon-triangle-right text-success"></span>
+                                    <!-- <span class="glyphicon glyphicon-triangle-right text-success"></span> -->
                                     <%= link_to "All", root_url %>
                                   </td>
                               </tr>
                              <% FowlCategory.find_each do |category| %>
                               <tr>
                                   <td>
-                                    <span class="glyphicon glyphicon-triangle-right text-success"></span>
+                                    <!-- <span class="glyphicon glyphicon-triangle-right text-success"></span> -->
                                     <%= link_to category.name, root_url(bloodline_id: category.id) %>
                                   </td>
                               </tr>
@@ -31,8 +31,8 @@
               <div class="panel panel-default">
                   <div class="panel-heading">
                       <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
-                          </span>DERBY Schedules</a>
+                          <span class="glyphicon glyphicon-th">
+                          </span>DERBY Schedules
                       </h4>
                   </div>
                   <div id="collapseTwo2" class="in collapse">

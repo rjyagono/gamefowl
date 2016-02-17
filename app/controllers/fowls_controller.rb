@@ -1,4 +1,6 @@
 class FowlsController < ApplicationController
+	layout "application", only: [:index]
+	
 	before_filter :find_fowl, only: [:show, :edit, :update, :destroy, :upvote]
 	before_filter :authenticate_user!, except: [:index, :show]
 	
