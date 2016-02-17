@@ -31,13 +31,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 nav {
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+	
 	.navbar-brand {
 	  a {
-		  color: #BD1E23;
+		  color: #fcb843;
 			font-weight: bold;
 			&:hover {
 				text-decoration: none;
+				background-color: #fcb843;
 			}
 		}
 	}
@@ -97,7 +98,7 @@ nav {
 	  		font-size: 12px;
 	  		font-style: normal;
 	  		font-weight: bold;
-	  		line-height: 18px;
+	  		line-height: 250px;
 	  	}
 	  	.headline {
 	  		color: #2e2e2e;
