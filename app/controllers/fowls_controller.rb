@@ -22,6 +22,7 @@ class FowlsController < ApplicationController
 	
 	def	new
 		@fowl = current_user.fowls.build
+		@categories = FowlCategory.all
 	end
 	
 	def	create

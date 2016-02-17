@@ -59,8 +59,8 @@ class PhotosController < ApplicationController
 
   def upload
     @photo = Photo.new(image: params[:file])
-    parsed = Photo.parse_filename(params[:name])
-    @photo.title = parsed[:title]
+      parsed = Photo.parse_filename(params[:name])
+      @photo.title = parsed[:title]
     if @photo.save
      delay
      render json: { id: @photo.id, filepath: @photo.image_url(:thumb) }
