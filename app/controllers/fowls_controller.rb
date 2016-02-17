@@ -8,6 +8,7 @@ class FowlsController < ApplicationController
 		if request.subdomain == 'www' || request.subdomain == ''
 			if bloodline_params.present?
 				@fowls = Fowl.where(fowl_category_id: bloodline_params).order("created_at DESC")
+				@category = FowlCategory.find(bloodline_params) if bloodline_params.present?
 			else
 				@fowls = Fowl.order("created_at DESC")
 			end

@@ -1,7 +1,8 @@
 #fowl_show.row
-  .col-md-12
-    %h2.title= @fowl.title
-
+  .container
+    .col-md-12
+      %h2.title= @fowl.title
+      %h2.price= number_to_currency(@fowl.price, unit: '₱') if @fowl.price
     .col-md-8
       .panel.panel-default
         .panel-heading.fowl_image.fotorama{"data-nav" => "thumbs"}
@@ -12,17 +13,36 @@
           - else
             = image_tag('no-image.png')
 
-        .panel-heading.fowl_video
-          = video_tag @fowl.video_url, controls: true, style: " margin-left: 15%; max-width: 70%;" if @fowl.video.present?
-        .panel-body
-          %p= @fowl.description
+        .panel-heading.fowl_video.text-center
+          = video_tag @fowl.video_url, controls: true, style: " max-width: 70%;" if @fowl.video.present?
         .panel-body
           .row
-            .col-md-6
-              %p.user
-              Submitted By
-              - if @fowl.user
-                = link_to @fowl.user.name, profile_path(@fowl.user.id) 
+            %h2.h2brown{:style => "margin-top:0px;"} Specifications
+            .row
+              .col-xs-12{:style => "line-height:25px;"}
+                .row
+                  .col-xs-6.col-lg-5 Bloodline :
+                  .col-xs-6.col-lg-7= @fowl.try(:category).try(:name)
+                .row
+                  .col-xs-6.col-lg-5 Current Age :
+                  .col-xs-6.col-lg-7= @fowl.age
+                .row
+                  .col-xs-6.col-lg-5 Weight :
+                  .col-xs-6.col-lg-7= @fowl.weight
+          %br
+          .row
+            %h2.h2brown{:style => "margin-top:0px;"} Full Details
+            .row
+              .col-xs-12{:style => "line-height:25px;"}
+                %p= @fowl.description
+
+        .panel-body
+          .row
+            / .col-md-6
+            /   %p.user
+            /   Submitted By
+            /   - if @fowl.user
+            /     = link_to @fowl.user.name, profile_path(@fowl.user.id) 
 
             .col-md-6
               .btn-group.pull-right
@@ -48,9 +68,12 @@
       .contact-box
         %h2.title Contact the Seller
         .location
-          %span.glyphicon.glyphicon-map-marker
+          %span.glyphicon.glyphicon-user
           = @fowl.user.name
-        %span.glyphicon.glyphicon-user
+        .location
+          %span.glyphicon.glyphicon-map-marker
+          = @fowl.user.location
+        %span.glyphicon.glyphicon-calendar
         Member since 
         = @fowl.user.created_at.strftime(" %b %C")
         %br

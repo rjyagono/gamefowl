@@ -25,6 +25,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 100;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
 }
 
 nav {
@@ -353,8 +356,19 @@ a.close:hover {
 
 .navbar-brand {
     display: block;
-    left: 50%;
+    left: 45%;
     position: absolute;
     text-align: center;
     top: 6px;
+}
+
+.title {
+    color: #b66222;
+    font-family: "Passion One",cursive;
+    margin-top: 10px;
+}
+
+.price {
+	font-size: 2em;
+    font-weight: bold;
 }

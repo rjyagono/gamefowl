@@ -1,148 +1,26 @@
+  <div class="list-group">
+    <a href="#" class="list-group-item panel-heading">
+        <h4 class="panel-title">
+            <span class="glyphicon glyphicon-folder-close">
+            </span>Bloodlines
+        </h4>
+    </a>
 
-          <div class="panel-group" id="accordion">
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <span class="glyphicon glyphicon-folder-close">
-                          </span>Bloodlines
-                      </h4>
-                  </div>
-                  <div id="collapseOne1" class="in">
-                      <div class="panel-body">
-                          <table class="table">
-                             <tr>
-                                  <td>
-                                    <!-- <span class="glyphicon glyphicon-triangle-right text-success"></span> -->
-                                    <%= link_to "All", root_url %>
-                                  </td>
-                              </tr>
-                             <% FowlCategory.find_each do |category| %>
-                              <tr>
-                                  <td>
-                                    <!-- <span class="glyphicon glyphicon-triangle-right text-success"></span> -->
-                                    <%= link_to category.name, root_url(bloodline_id: category.id) %>
-                                  </td>
-                              </tr>
-                             <% end %>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-              <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <span class="glyphicon glyphicon-th">
-                          </span>DERBY Schedules
-                      </h4>
-                  </div>
-                  <div id="collapseTwo2" class="in collapse">
-                      <div class="panel-body">
-                          <table class="table">
-<!--                                 <tr>
-                                  <td>
-                                      <a href="http://www.jquery2dotnet.com">Orders</a> <span class="label label-success">$ 320</span>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="http://www.jquery2dotnet.com">Invoices</a>
-                                  </td>
-                              </tr> -->
-                              <tr>
-                                  <td>
-                                      <a href="">Stag Derby</a>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="">Cock Derby</a>
-                                  </td>
-                              </tr>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-              <!-- <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
-                          </span>Farm Supplies & Equipments</a>
-                      </h4>
-                  </div>
-                  <div id="collapseTwo2" class="in ">
-                      <div class="panel-body">
-                          <table class="table">
-<!--                                 <tr>
-                                  <td>
-                                      <a href="http://www.jquery2dotnet.com">Orders</a> <span class="label label-success">$ 320</span>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="http://www.jquery2dotnet.com">Invoices</a>
-                                  </td>
-                              </tr> -->
-                              <!-- <tr>
-                                  <td>
-                                      <a href="">Stag Derby</a>
-                                  </td>
-                              </tr> -->
-                              <!-- <tr>
-                                  <td>
-                                      <a href="">Cock Derby</a>
-                                  </td>
-                              </tr> -->
-                          <!-- </table>
-                      </div>
-                  </div> -->
-              <!-- </div> -->
-              <!-- <div class="panel panel-default">
-                  <div class="panel-heading">
-                      <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
-                          </span>Account</a>
-                      </h4>
-                  </div>
-                  <div id="collapseThree3" class="in">
-                      <div class="panel-body">
-                          <table class="table">
-                              <tr>
-                                  <td>
-                                      <a href="">Change Password</a>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="">Notifications</a> <span class="label label-info">5</span>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="">Import/Export</a>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <span class="glyphicon glyphicon-trash text-danger"></span><a href="" class="text-danger">
-                                          Delete Account</a>
-                                  </td>
-                              </tr>
-                          </table>
-                      </div>
-                  </div>
-              </div> -->
-          </div> 
-<!--        </div>-->
-<!--
-      <div class="col-sm-9 col-md-9">
-          <div class="well">
-              <h1>
-                  Accordion Menu With Icon</h1>
-              Admin Dashboard Accordion Menu
-          </div>
-      </div>
--->
-<!--
+    <%= link_to "All", root_url, class: "list-group-item" %>
+    <% FowlCategory.find_each do |category| %>
+        <%= link_to category.name, root_url(bloodline_id: category.id), class: "list-group-item" %>
+     <% end %>
+    
   </div>
-</div>
--->
+
+  <div class="list-group">
+    <a href="#" class="list-group-item panel-heading">
+        <h4 class="panel-title">
+          <span class="glyphicon glyphicon-th">
+          </span>DERBY Schedules
+        </h4>
+    </a>
+
+    <%= link_to "Stag Derby", root_url, class: "list-group-item" %>
+    <%= link_to "Cock Derby", root_url, class: "list-group-item" %>
+  </div>

@@ -1,24 +1,21 @@
-  
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
-                            </span>Videos</a>
-                        </h4>
-                    </div>
-            </div>
-<!--        </div>-->
-<!--
-        <div class="col-sm-9 col-md-9">
-            <div class="well">
-                <h1>
-                    Accordion Menu With Icon</h1>
-                Admin Dashboard Accordion Menu
-            </div>
-        </div>
--->
-<!--
-    </div>
-</div>
--->
+<% if request.subdomain == "www" %>
+  <div class="list-group">
+    <a href="#" class="list-group-item panel-heading">
+        <h4 class="panel-title">
+          <span class="glyphicon glyphicon-user">
+          </span> Featured Breeders
+        </h4>
+    </a>
+
+  </div>
+<% else %>
+  <div class="list-group">
+    <a href="#" class="list-group-item panel-heading">
+        <h4 class="panel-title">
+          <span class="glyphicon glyphicon-facetime-video">
+          </span> Fowl Videos
+        </h4>
+    </a>
+
+  </div>
+<% end %>
