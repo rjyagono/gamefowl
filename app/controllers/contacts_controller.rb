@@ -43,16 +43,15 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
+    @fowl = Fowl.find(params[:contact][:fowl_id])
 
     respond_to do |format|
       if @contact.save
-				flash[:success] = 'Thank you for subscribing to our newsletter.'
-				format.html { redirect_to contacts_url }
-        format.json { render json: @contact, status: :created, location: @contact }
+				flash[:success] = 'Your message has been sent. Thank You!'
+				format.html { redirect_to @fowl }
       else
-				flash[:danger] = 'Sorry! Please provide a valid email address.'
-				format.html { redirect_to contacts_url }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+				flash[:danger] = 'Sorry! You did not set the proper return email address.'
+				format.html { redirect_to @fowl }
       end
     end
   end
@@ -88,6 +87,6 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-		params.require(:contact).permit(:email,:name, :age)
+		params.require(:contact).permit(:email, :name, :phone, :message, :fowl_id, :to_owner_id)
   end
 end

@@ -1,7 +1,7 @@
 class AddVideoFieldsOnFowls < ActiveRecord::Migration
   def self.up
     change_table :fowls do |t|
-      t.attachment :video
+      t.string :video
     end
   end
 

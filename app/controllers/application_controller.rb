@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   layout :layout_by_resource
-  protect_from_forgery with: :exception
-  before_filter :get_fowls
+  #protect_from_forgery with: :exception
+  #before_filter :get_fowls
 
 def after_sign_in_path_for(resource)
   sign_in_url = new_user_session_url

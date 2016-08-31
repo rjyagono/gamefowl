@@ -1,19 +1,21 @@
 = render "layouts/main"
+- flash.each do |name, msg|
+  = content_tag :div, msg, class: "alert alert-#{name} text-center"
+
 #page-content-wrapper
   .container-fluid
     .row
-      .col-sm-3.col-md-2
-        = render "layouts/sidemenu"
-      .col-sm-8.col-md-8
+      / .col-sm-3.col-md-2
+      /   = render "layouts/sidemenu"
+      .col-sm-10.col-md-12
         = yield
-      .col-sm-3.col-md-2
-        = render "layouts/rightmenu"
+      / .col-sm-3.col-md-2
+      /   = render "layouts/rightmenu"
   / /#page-content-wrapper
 / /#wrapper
 / jQuery
-%script{:src => "js/jquery.js"}
-/ Bootstrap Core JavaScript
-%script{:src => "js/bootstrap.min.js"}
+
+%script#dsq-count-scr{:async => "", :src => "//thecockers.disqus.com/count.js"}
 / Menu Toggle Script
 :javascript
   $("#menu-toggle").click(function(e) {

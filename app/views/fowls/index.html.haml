@@ -9,18 +9,34 @@
             - else
               = image_tag('no-image.png')
             = render "price", price: fowl
-          .info
-            .headline
-              = fowl.title
-            .posted
-              %span.glyphicon.glyphicon-time
-              = fowl.created_at.strftime("Posted #{fowl.created_at.day.ordinalize} %b")
-            .posted
-              %span.glyphicon.glyphicon-map-marker
-              = fowl.user.location
+          / .info
+          /   .headline
+          /     = fowl.title
+          /   .posted
+          /     %span.glyphicon.glyphicon-time
+          /     = fowl.created_at.strftime("Posted #{fowl.created_at.day.ordinalize} %b")
+          /   .posted
+          /     %span.glyphicon.glyphicon-map-marker
+          /     = fowl.user.location
+          .caption
+            .name
+              %a{ :href => fowl_path(fowl), :title => "#{fowl.title}"} 
+                = fowl.title
+
+            / .percent
+            /   %span $122
+            %p.price
+              %span.price-old
+                %span.glyphicon.glyphicon-time
+                = fowl.created_at.strftime("Posted #{fowl.created_at.day.ordinalize} %b") 
+              %br
+              %span.price-new 
+                %span.glyphicon.glyphicon-map-marker
+                = fowl.user.location
+
 
   - else
     .alert.alert-danger{:role => "alert"}
       %strong 
         %span.glyphicon.glyphicon-alert
-        No results found for "#{@category.name}".
+        No results found for "#{@category.try(:name)}".

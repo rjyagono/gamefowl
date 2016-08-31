@@ -1,12 +1,12 @@
 = render "layouts/main"
+- flash.each do |name, msg|
+  = content_tag :div, msg, class: "alert alert-#{name} text-center"
+  
 #page-content-wrapper
   .container-fluid
     .row
       = yield
-/ jQuery
-%script{:src => "js/jquery.js"}
-/ Bootstrap Core JavaScript
-%script{:src => "js/bootstrap.min.js"}
+ 
 / Menu Toggle Script
 :javascript
   $("#menu-toggle").click(function(e) {

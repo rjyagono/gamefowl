@@ -1,8 +1,18 @@
 #fowl_show.row
   .container
-    .col-md-12
+    .col-md-12.header-detail  
       %h2.title= @fowl.title
-      %h2.price= number_to_currency(@fowl.price, unit: '₱') if @fowl.price
+      %h2.price= number_to_currency(@fowl.price, unit: '₱', precision: 0) if @fowl.price
+
+      .pdp-heading-info
+        .pdp-heading-meta
+          %span.glyphicon.glyphicon-map-marker
+          = @fowl.user.location
+
+          %span.glyphicon.glyphicon-earphone
+          = @fowl.user.contact_number
+
+
     .col-md-8
       .panel.panel-default
         .panel-heading.fowl_image.fotorama{"data-nav" => "thumbs"}
@@ -31,7 +41,7 @@
                   .col-xs-6.col-lg-7= @fowl.weight
           %br
           .row
-            %h2.h2brown{:style => "margin-top:0px;"} Full Details
+            %h2.h2brown{:style => "margin-top:0px;"} Details
             .row
               .col-xs-12{:style => "line-height:25px;"}
                 %p= @fowl.description
@@ -54,37 +64,110 @@
 
         .panel-footer
           .row
-            .col-md-6
+            .col-md-12
               #comment
-                %h2.comment_count= pluralize(@fowl.comments.count, "Comment")
-                - @fowl.comments.each do |comment|
-                  .comment
-                    %p.username= comment.user.email
-                    %p.content= comment.content
-                %br
-                = render "comments/form"
+                / %h2.comment_count= pluralize(@fowl.comments.count, "Comment")
+                / - @fowl.comments.each do |comment|
+                /   .comment
+                /     %p.username= comment.user.email
+                /     %p.content= comment.content
+                / %br
+                / = render "comments/form"
+
+                #disqus_thread
+                :javascript
+                  /**
+                   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                   */
+                  /*
+                  var disqus_config = function () {
+                      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                  };
+                  */
+                  (function() {  // DON'T EDIT BELOW THIS LINE
+                      var d = document, s = d.createElement('script');
+                      
+                      s.src = '//thecockers.disqus.com/embed.js';
+                      
+                      s.setAttribute('data-timestamp', +new Date());
+                      (d.head || d.body).appendChild(s);
+                  })();
+                / %noscript
+                /   Please enable JavaScript to view the
+                /   %a{:href => "https://disqus.com/?ref_noscript", :rel => "nofollow"} comments powered by Disqus.
 
     .col-md-4
-      .contact-box
-        %h2.title Contact the Seller
-        .location
-          %span.glyphicon.glyphicon-user
-          = @fowl.user.name
-        .location
-          %span.glyphicon.glyphicon-map-marker
-          = @fowl.user.location
-        %span.glyphicon.glyphicon-calendar
-        Member since 
-        = @fowl.user.created_at.strftime(" %b %C")
-        %br
-          %br
-            %a.btn.btn-orange.btn-block.btn-responsive{:href => "#"}
-              %span.glyphicon.glyphicon-earphone
-              = @fowl.user.contact_number
-            %hr
-              %a.btn.btn-orange.btn-block.btn-responsive{:href => "#"}
-                %span.glyphicon.glyphicon-envelope
-                Email Seller
+      .contact-box.pdp-lead-col 
+        .pdp-lead-ctn
+          %div{"data-tag_section" => "lead_submission_box_top", :style => "position: relative;"}
+            .lead-form-header.pdp-lead-header
+              %h3 Contact this owner
+              .lead-form-contact-callout
+                Call
+                %a.tel-default.attributed-click.hidden-xs.js-campaign-phone-number.js-phone{"data-campaign-telephone" => "(407) 347-6550", "data-listingid" => "100059511", "data-phonecount" => "1", "data-tag_item" => "phone_number_link", :href => "tel:4073293023", :itemprop => "telephone"}
+                  %strong.tel (+63) #{@fowl.user.contact_number}
+                  
+                or send an email
+
+            .lead-form-ctn 
+              .js-lead-form-errors.lead-form-inline-errors{"data-context" => "inline"}
 
 
+              %form{:action => "/contacts", :method => "post", :role => "form"}
 
+                .col-lg-12
+                  / .well.well-sm
+                  /   %strong
+                  /     %i.glyphicon.glyphicon-ok.form-control-feedback
+                  /     Required Field
+
+                  .form-group
+                    To:
+                    %span= @to_user
+
+                  .form-group
+                    %label{:for => "InputMessage"} Message
+                    .input-group
+                      %textarea#InputMessage.form-control{:name => "contact[message]", :placeholder => "Say hi!", :required => "", :rows => "5"} 
+                      %span.input-group-addon
+                        %i.glyphicon.glyphicon-ok.form-control-feedback
+
+                  .form-group
+                    %label{:for => "InputName"} Name
+                    .input-group
+                      %input#InputName.form-control{:name => "contact[name]", :placeholder => "Name", :required => "", :type => "text"}
+                        %span.input-group-addon
+                          %i.glyphicon.glyphicon-ok.form-control-feedback
+                  .form-group
+                    %label{:for => "InputEmail"} Email
+                    .input-group
+                      %input#InputEmail.form-control{:name => "contact[email]", :placeholder => "Email Address", :required => "", :type => "email"}
+                        %span.input-group-addon
+                          %i.glyphicon.glyphicon-ok.form-control-feedback
+
+                  .form-group
+                    %label{:for => "InputPhone"} Phone
+                    .input-group
+                      %input#InputName.form-control{:name => "contact[phone]", :placeholder => "Phone (optional)", :required => "", :type => "text"}
+                        %span.input-group-addon
+                          %i.glyphicon.glyphicon-ok.form-control-feedback
+
+                  %input#submit.btn.btn-info.pull-right{:name => "contact[fowl_id]", :type => "hidden", :value => @fowl.id} 
+                  %input#submit.btn.btn-info.pull-right{:name => "contact[to_owner_id]", :type => "hidden", :value => @fowl.user_id} 
+                  %input#submit.btn.btn-info.pull-right{:name => "submit", :type => "submit", :value => "Submit"}    
+                
+            %p.lead-disclaimer.hidden-logged-in
+              By sending, you agree to TheCockers.net's
+              %a{:href => "/company/legal/termsofuse/"} Terms of Use
+              and
+              = succeed "." do
+                %a{:href => "/company/privacy-full/"} Privacy Policy
+
+:javascript
+  $(function() {
+     $('.alert').delay(800).fadeIn('normal', function() {
+        $(this).delay(3000).fadeOut();
+     });
+  });

@@ -16,6 +16,9 @@ class FowlsController < ApplicationController
 	end
 	
 	def show
+		@contact = Contact.new
+		@to_user = @fowl.user.name
+		
 		respond_to do |format|
 			format.html { } #for my controller, i wanted it to be JS only
 			format.js
@@ -97,7 +100,7 @@ class FowlsController < ApplicationController
 	end
 
 	def photo_ids_params
-		params.require(:photos)
+		params.require(:photos) if params[:photos].present?
 	end
 	
 	def	find_fowl

@@ -13,49 +13,225 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-inverse.navbar-default.container-header-color{:role => "navigation"}
-      .navbar-header.pull-right
-        .pull-right
-          %button.btn.btn-nav.navbar-btn.dropdown-toggle.margin-right-10{"aria-expanded" => "false", "data-toggle" => "dropdown", :style => "opacity: 1;", :type => "button"}
-            .hidden-xs.hidden-sm
-              %i.fa.fa-user.fa-lg.fa-fw>
-              \&nbsp;&nbsp;My Account
-              %span.caret
-            .hidden-xs.hidden-md.hidden-lg
-              %i.fa.fa-user.fa-lg.fa-fw>
-              \&nbsp;&nbsp;Account
-              %span.caret
-            .hidden-sm.hidden-md.hidden-lg
-              %i.fa.fa-user.fa-lg.fa-fw
-              %span.caret
-          - if user_signed_in?
-            %ul.dropdown-menu.pull-right.col-xs-7.col-sm-4.col-md-3.col-lg-2{:role => "menu"}
-              %li
-                %a{"data-method" => "delete", :href => destroy_user_session_path}
-                  %i.fa.fa-sign-in.fa-lg>
-                  \&nbsp;&nbsp;Sign Out
-              %li
-                %a{:href => edit_user_registration_path }
-                  %i.fa.fa-user.fa-lg>
-                  \&nbsp;&nbsp;Profile
-              %li
-                %a{:href => new_fowl_path }
-                  %i.fa.fa-plus.fa-lg>
-                  \&nbsp;&nbsp;Post New Fowl
-          - else      
-            %ul.dropdown-menu.pull-right.col-xs-7.col-sm-4.col-md-3.col-lg-2{:role => "menu"}
-              %li
-                %a{:href => new_user_session_path}
-                  %i.fa.fa-sign-in.fa-lg>
-                  \&nbsp;&nbsp;Sign In
-              %li
-                %a{:href => new_user_registration_path}
-                  %i.fa.fa-user.fa-lg>
-                  \&nbsp;&nbsp;Register
-              %li
-                %a{:href => new_fowl_path}
-                  %i.fa.fa-plus.fa-lg>
-                  \&nbsp;&nbsp;Post New Fowl
+    / %nav.navbar.navbar-inverse.navbar-default.container-header-color{:role => "navigation"}
+    /   %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-2", "data-toggle" => "collapse", :type => "button"}
+    /     %span.sr-only Toggle navigation
+    /     %span.icon-bar
+    /     %span.icon-bar
+    /     %span.icon-bar
+    /   .navbar-logo= link_to image_tag('cocker.jpg'), root_path
+        
+    /   #bs-example-navbar-collapse-2
+    /     %form.navbar-form.navbar-left{:role => "search"}
+    /       .input-group
+    /         %input.form-control.input-lg{:placeholder => "Search here...", :type => "text"}         
+    /         %span.input-group-btn
+    /           %button.btn.btn-default.btn-lg{:type => "button"}
+    /             %i.fa.fa-search
+    /     .navbar-header.pull-right
+    /       .pull-right
+    /         %button.btn.btn-nav.navbar-btn.dropdown-toggle.margin-right-10{"aria-expanded" => "false", "data-toggle" => "dropdown", :style => "opacity: 1;", :type => "button"}
+    /           .hidden-xs.hidden-sm
+    /             %i.fa.fa-user.fa-lg.fa-fw>
+    /             \&nbsp;&nbsp;My Account
+    /             %span.caret
+    /           .hidden-xs.hidden-md.hidden-lg
+    /             %i.fa.fa-user.fa-lg.fa-fw>
+    /             \&nbsp;&nbsp;Account
+    /             %span.caret
+    /           .hidden-sm.hidden-md.hidden-lg
+    /             %i.fa.fa-user.fa-lg.fa-fw
+    /             %span.caret
+    /         - if user_signed_in?
+    /           %ul.dropdown-menu.pull-right.col-xs-7.col-sm-4.col-md-3.col-lg-2{:role => "menu"}
+    /             %li
+    /               %a{"data-method" => "delete", :href => destroy_user_session_path}
+    /                 %i.fa.fa-sign-in.fa-lg>
+    /                 \&nbsp;&nbsp;Sign Out
+    /             %li
+    /               %a{:href => edit_user_registration_path }
+    /                 %i.fa.fa-user.fa-lg>
+    /                 \&nbsp;&nbsp;Profile
+    /             %li
+    /               %a{:href => new_fowl_path }
+    /                 %i.fa.fa-plus.fa-lg>
+    /                 \&nbsp;&nbsp;Post New Fowl
+    /         - else      
+    /           %ul.dropdown-menu.pull-right.col-xs-7.col-sm-4.col-md-3.col-lg-2{:role => "menu"}
+    /             %li
+    /               %a{:href => new_user_session_path}
+    /                 %i.fa.fa-sign-in.fa-lg>
+    /                 \&nbsp;&nbsp;Sign In
+    /             %li
+    /               %a{:href => new_user_registration_path}
+    /                 %i.fa.fa-user.fa-lg>
+    /                 \&nbsp;&nbsp;Register
+    /             %li
+    /               %a{:href => new_fowl_path}
+    /                 %i.fa.fa-plus.fa-lg>
+    /                 \&nbsp;&nbsp;Post New Fowl
 
-      .navbar-header
-        .navbar-logo.navbar-brand= link_to image_tag('cocker.jpg'), root_path
+    /   .navbar-header
+    /     .navbar-logo.navbar-brand= link_to image_tag('cocker.jpg'), root_path
+
+    / %nav.navbar.navbar-default
+    /   .container-fluid
+    /     .navbar-header
+    /       %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+    /         %span.sr-only Toggle navigation
+    /         %span.icon-bar
+    /         %span.icon-bar
+    /         %span.icon-bar
+    /       %a.navbar-brand{:href => "#"} Brand
+    /     #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    /       %ul.nav.navbar-nav
+    /         %li.active
+    /           %a{:href => "#"}
+    /             Link
+    /             %span.sr-only (current)
+    /         %li
+    /           %a{:href => "#"} Link
+    /         %li.dropdown
+    /           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+    /             Dropdown
+    /             %span.caret
+    /           %ul.dropdown-menu
+    /             %li
+    /               %a{:href => "#"} Action
+    /             %li
+    /               %a{:href => "#"} Another action
+    /             %li
+    /               %a{:href => "#"} Something else here
+    /             %li.divider{:role => "separator"}
+    /             %li
+    /               %a{:href => "#"} Separated link
+    /             %li.divider{:role => "separator"}
+    /             %li
+    /               %a{:href => "#"} One more separated link
+    /       %form.navbar-form.navbar-left{:role => "search"}
+    /         .form-group
+    /           %input.form-control{:placeholder => "Search", :type => "text"}         
+    /           %button.btn.btn-default{:type => "submit"} Submit
+    /       %ul.nav.navbar-nav.navbar-right
+    /         %li
+    /           %a{:href => "#"} Link
+    /         %li.dropdown
+    /           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+    /             Dropdown
+    /             %span.caret
+    /           %ul.dropdown-menu
+    /             %li
+    /               %a{:href => "#"} Action
+    /             %li
+    /               %a{:href => "#"} Another action
+    /             %li
+    /               %a{:href => "#"} Something else here
+    /             %li.divider{:role => "separator"}
+    /             %li
+    /               %a{:href => "#"} Separated link
+
+    / Second navbar for search
+    %nav.navbar.navbar-default.navbar-static-top
+      .container-fluid
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          .navbar-logo.navbar-brand= link_to image_tag('cocker.jpg'), root_path
+          
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %form.navbar-form.navbar-left{:method => "GET", :role => "search"}
+            .form-group
+              %input.form-control{:name => "q", :placeholder => "Search", :type => "text"}
+            %button.btn.btn-default{:type => "submit"}
+              %i.glyphicon.glyphicon-search
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{:href => "#", :target => "_blank"} Contact Us
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                My Account
+                %span.caret
+              - if user_signed_in?
+                %ul.dropdown-menu{:role => "menu"}
+                  %li
+                    %a{:href => edit_user_registration_path }
+                      %i.fa.fa-user.fa-lg>
+                      \&nbsp;&nbsp;Profile
+                  %li
+                    %a{:href => new_fowl_path }
+                      %i.fa.fa-plus.fa-lg>
+                      \&nbsp;&nbsp;Post New Fowl
+                  %li.divider
+                  %li
+                    %a{"data-method" => "delete", :href => destroy_user_session_path}
+                      %i.fa.fa-sign-in.fa-lg>
+                      \&nbsp;&nbsp;Sign Out
+              - else      
+                %ul.dropdown-menu.pull-right.col-xs-7.col-sm-4.col-md-3.col-lg-2{:role => "menu"}
+                  %li
+                    %a{:href => new_user_registration_path}
+                      %i.fa.fa-user.fa-lg>
+                      \&nbsp;&nbsp;Register
+                  %li
+                    %a{:href => new_fowl_path}
+                      %i.fa.fa-plus.fa-lg>
+                      \&nbsp;&nbsp;Post New Fowl
+                  %li.divider
+                  %li
+                    %a{:href => new_user_session_path}
+                      %i.fa.fa-sign-in.fa-lg>
+                      \&nbsp;&nbsp;Sign In
+              / /.navbar-collapse
+            / /.container-fluid
+            / %li
+            /   .navbar-header.pull-right
+            /     .pull-right
+            /       %button.btn.btn-nav.navbar-btn.dropdown-toggle.margin-right-10{"aria-expanded" => "false", "data-toggle" => "dropdown", :style => "opacity: 1;", :type => "button"}
+            /         .hidden-xs.hidden-sm
+            /           %i.fa.fa-user.fa-lg.fa-fw>
+            /           \&nbsp;&nbsp;My Account
+            /           %span.caret
+            /         .hidden-xs.hidden-md.hidden-lg
+            /           %i.fa.fa-user.fa-lg.fa-fw>
+            /           \&nbsp;&nbsp;Account
+            /           %span.caret
+            /         .hidden-sm.hidden-md.hidden-lg
+            /           %i.fa.fa-user.fa-lg.fa-fw
+            /           %span.caret
+            /       - if user_signed_in?
+            /         %ul.dropdown-menu.pull-right.col-xs-7.col-sm-4.col-md-3.col-lg-2{:role => "menu"}
+            /           %li
+            /             %a{"data-method" => "delete", :href => destroy_user_session_path}
+            /               %i.fa.fa-sign-in.fa-lg>
+            /               \&nbsp;&nbsp;Sign Out
+            /           %li
+            /             %a{:href => edit_user_registration_path }
+            /               %i.fa.fa-user.fa-lg>
+            /               \&nbsp;&nbsp;Profile
+            /           %li
+            /             %a{:href => new_fowl_path }
+            /               %i.fa.fa-plus.fa-lg>
+            /               \&nbsp;&nbsp;Post New Fowl
+            /       - else      
+            /         %ul.dropdown-menu.pull-right.col-xs-7.col-sm-4.col-md-3.col-lg-2{:role => "menu"}
+            /           %li
+            /             %a{:href => new_user_session_path}
+            /               %i.fa.fa-sign-in.fa-lg>
+            /               \&nbsp;&nbsp;Sign In
+            /           %li
+            /             %a{:href => new_user_registration_path}
+            /               %i.fa.fa-user.fa-lg>
+            /               \&nbsp;&nbsp;Register
+            /           %li
+            /             %a{:href => new_fowl_path}
+            /               %i.fa.fa-plus.fa-lg>
+            /               \&nbsp;&nbsp;Post New Fowl
+
+        / /.navbar-collapse
+      / /.container
+    / /.navbar
